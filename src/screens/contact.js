@@ -1,15 +1,10 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 function Contact() {
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '100vh'
-            }}
-        >
+        <div>
+            <Navbar/>
            <h1>Contact Us</h1> 
         </div>
     );

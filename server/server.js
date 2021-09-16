@@ -1,21 +1,24 @@
+const bodyParser = require('body-parser')
 const express = require('express');
 const colors = require('colors');
 
 // import morgan from 'morgan';
-const bodyParser = require('body-parser')
+
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const cors=require('cors')
 dotenv.config();
 
-const mysql=require('./models/db')
-const customerRoutes=require('./routes/routes.customer')
+const mysql=require('./models/db');
+const customerRoutes=require('./routes/routes.customer');
+const userRoutes=require('./routes/userRoutes');
+const materialRoutes=require('./routes/materialRoutes')
 
-// imm
+// port on which the server is running
 
-const port=process.env.PORT;
+const port=process.env.PORT||5000;
 
 const app = express(); 
-
 
 
 //Express session
@@ -32,12 +35,25 @@ app.use(bodyParser.urlencoded({
     extended: true,
 }))
 
+// cors middle ware to allow cross site
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 app.use(expressSession);
 app.use(cookieParser());
-
+// app.use(cors({
+//   origin: 'http://localhost:3000/'
+// }))
 app.use('/tikaton', customerRoutes);
+app.use('/tkUser', userRoutes);
+app.use('/tkMaterial', materialRoutes);
 
-const server = app.listen(3500, () => {
+const server = app.listen(port, () => {
     const { address, port } = server.address();
     console.log(`Listening at http://localhost:${port}`.magenta.bold);
   });

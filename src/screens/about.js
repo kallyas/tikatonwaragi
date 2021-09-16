@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from '../components/Navbar';
 
 const About = () => {
     return (
@@ -8,6 +9,7 @@ const About = () => {
             backgroundColor:'#250001'
             
         }}>
+            <Navbar/>
         <div
             style={{
                 display: 'flex',
