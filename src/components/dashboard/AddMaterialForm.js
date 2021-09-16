@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Card, Form, Col, Row, Button } from "react-bootstrap";
+import { Card, Form, Col, Row, Button, Table } from "react-bootstrap";
+import MaterialTable from "./MaterialTable";
 
 const AddMaterialForm = () => {
   // Dropdown menu items
@@ -28,15 +29,21 @@ const AddMaterialForm = () => {
   const [discount, setDiscount] = useState("");
   const [paidAmount, setPaidAmount] = useState("");
 
-  const [material, setMaterial]=useState([])
+  const [materials, setMaterial]=useState([])
   
   
    const addMaterial=()=>{
-      const newMaterial=[item,quantity,unitPrice,amount]
-      setMaterial("");
+    const newMaterial=[...materials,{category,item,quantity,unitPrice,amount}]
+      //  newMaterial.push(item,quantity,unitPrice,amount);
+      setMaterial(newMaterial);
       console.log(newMaterial)
-}
- 
+    }
+    const removeMaterial = (index) => {
+      const newMaterial = [...materials];
+      newMaterial.splice(index, 1);
+      setMaterial(newMaterial);
+    };
+
 
   return (
     <div>
@@ -71,12 +78,32 @@ const AddMaterialForm = () => {
             </Row>
             <hr />
             <Row className="mb-3">
-              <div>    Input value: {category}
-              Input value: {item}
-              Input value: {quantity}
-              Input value: {unitPrice}
-              Input value: {amount} 
-              <Button>Edit</Button>
+         
+              <div>  
+              <Table hover className="user-table align-items-center">
+                <thead>
+                  <tr>
+                    <th className="border-bottom">Category</th>
+                    <th className="border-bottom">Item</th>
+                    <th className="border-bottom">Quantity</th>
+                    <th className="border-bottom">Unit Price</th>
+                    <th className="border-bottom">Amount</th>
+                    <th className="border-bottom">Action</th>
+                  </tr>
+                </thead>
+               
+                            
+              {materials.map((material, index) => (
+            
+                <MaterialTable
+                key={index}
+                index={index}
+                material={material}
+                removeMaterial={removeMaterial}
+                />
+            
+          ))}
+              </Table> 
               </div>
               
               <Form.Group as={Col}>
