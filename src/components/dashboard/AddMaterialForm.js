@@ -6,7 +6,7 @@ const AddMaterialForm = () => {
   const SUPPLIERS = ["white", "red", "blue", "black", "cream"];
 
   // Handle Adding an item on the form
-  const materialForm={
+  const materialForm=[{
     invoiceNumber: "",
     supplier: "",
     category: "",
@@ -16,7 +16,7 @@ const AddMaterialForm = () => {
     totalAmount: "",
     discount: "",
     paidAmount: "",
-  }
+  }]
   const [invoiceNumber, setInvoiceNumber] = useState("");
   const [supplier, setSupplier] = useState("");
   const [category, setCategory] = useState("");
@@ -28,6 +28,14 @@ const AddMaterialForm = () => {
   const [discount, setDiscount] = useState("");
   const [paidAmount, setPaidAmount] = useState("");
 
+  const [material, setMaterial]=useState([])
+  
+  
+   const addMaterial=()=>{
+      const newMaterial=[item,quantity,unitPrice,amount]
+      setMaterial("");
+      console.log(newMaterial)
+}
  
 
   return (
@@ -63,11 +71,14 @@ const AddMaterialForm = () => {
             </Row>
             <hr />
             <Row className="mb-3">
-              Input value: {category}
+              <div>    Input value: {category}
               Input value: {item}
               Input value: {quantity}
               Input value: {unitPrice}
-              Input value: {amount}
+              Input value: {amount} 
+              <Button>Edit</Button>
+              </div>
+              
               <Form.Group as={Col}>
                 <Form.Control
                   placeholder="Category"
@@ -109,7 +120,7 @@ const AddMaterialForm = () => {
                 />
               </Form.Group>
             </Row>
-            <Button variant="primary" size="sm">
+            <Button variant="primary" size="sm" onClick={() => addMaterial()}>
               Add item
             </Button>
             <hr />
