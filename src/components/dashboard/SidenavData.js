@@ -12,14 +12,14 @@ const SideData = [
         {
           title: "Dashboard",
           icon:<FontAwesomeIcon name="users" icon={faHome}/>,
-          itemId: "/admin/dash",
+          itemId: "admin",
           // you can use your own custom Icon component as well
           // icon is optional
         },
         {
           title: "Material",
           icon:<FontAwesomeIcon name="users" icon={faUser}/>,
-          itemId: "/admin/material",
+          itemId: "admin/addMaterial",
           subNav: [
             {
               title: "Add New",
