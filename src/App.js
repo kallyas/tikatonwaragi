@@ -9,8 +9,9 @@ import React from "react";
     import SignUp from '../src/screens/signup';
     import SignIn from '../src/screens/signin';
     import Material from '../src/screens/Material'
-    import Admin from "./screens/adminScreen/administrator2"
-    import AddMaterial from "./screens/adminScreen/AddMaterial";
+    import Admin from "../src/screens/adminScreen/administrator2"
+    import AddMaterial from "../src/screens/adminScreen/AddMaterial";
+    import ListMaterial from "../src/screens/adminScreen/ListMaterial"
     // import components
     
     import Dashboard from '../src/components/dashboard/Dashboard';
@@ -35,10 +36,11 @@ import React from "react";
           
             <Route path="/admin" component={Admin} exact/>
             
-            <Route path="/admin/dash1" component={Dashboard1}/>
+            <Route path="/admin/dash1" component={Dashboard}/>
             <Route path="/admin/addMaterial" component={AddMaterial}/>
+            <Route path="/admin/materialList" component={ListMaterial}/>
           </Route>
-
+ 
 
           </Switch>
         </Router>

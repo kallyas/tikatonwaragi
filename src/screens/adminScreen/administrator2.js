@@ -15,7 +15,7 @@ function Adminstrator() {
         </div >
         <div className="data-display">
         {/* <Dashboard/> */}
-        <AddMaterialForm />
+        
           </div >
       
     </div>

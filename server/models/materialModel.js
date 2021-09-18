@@ -3,14 +3,13 @@ const sql = require("./db.js");
 
   // constructor
 const Material = function(material) {
-  this.materialName = material.materialName;
+  this.item = material.item;
   this.quantity= material.quantity
-  this.unitCost= material.unitCost;
-  this.rate= material.rate;
-this.total= material.total;
-  this.date=material.date;
-  this.supplierId=material.supplierId;
-
+  this.amount= material.amount;
+  this.unitPrice= material.unitPrice;
+  this.category= material.category;
+  this.invoiceNumber=material.invoiceNumber;
+  this.supplier_id=material.supplier_id;
   };
 
   Material.create = (newmaterial, result) => {
@@ -39,7 +38,6 @@ Material.findById = (materialId, result) => {
       result(null, res[0]);
       return;
     }
-
     // not found material with the id
     result({ kind: "not_found" }, null);
   });

@@ -11,13 +11,13 @@ exports.create = (req, res) => {
     
       // Create a material
       const material = new Material({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        materialname: req.body.materialname,
-        phone: req.body.phone,
-        department: req.body.department,
-        password:req.body.password
-        
+        item: req.body.item,
+        category: req.body.category,
+        quantity: req.body.quantity,
+        unitPrice: req.body.unitPrice,
+        amount: req.body.amount,
+        invoiceNumber :req.body.invoiceNumber,
+        supplier_id:req.body.supplier_id
       });
     
       // Save material in the database

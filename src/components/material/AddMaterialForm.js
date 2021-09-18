@@ -9,9 +9,10 @@ const AddMaterialForm = () => {
   // Handle Adding an item on the form
   const materialForm=[{
     invoiceNumber: "",
-    supplier: "",
+    supplier_id: "",
     category: "",
     item: "",
+    quantity:"",
     unitPrice: "",
     amount: "",
     totalAmount: "",
