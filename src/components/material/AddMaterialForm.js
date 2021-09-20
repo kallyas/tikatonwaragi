@@ -25,16 +25,7 @@ const AddMaterialForm = () => {
     setAmount(amount)
   }
 
-  const [materials, setMaterial]=useState([])
-  const materialForm={
-    invoiceNumber: invoiceNumber,
-    supplier_id:supplier,
-    category: category,
-    item: item,
-    quantity:quantity,
-    unitPrice:unitPrice ,
-    amount: amount
-  }
+
   let history = useHistory();
 
   // const [Details, setUserDetails] = useState("");
@@ -64,10 +55,11 @@ console.log(data)
 
 history.push("/admin/addMaterial");
 }   
-
+const [materials, setMaterial]=useState([])
    const addMaterial=()=>{
     const newMaterial=[...materials,{category,item,quantity,unitPrice,amount}]
       //  newMaterial.push(item,quantity,unitPrice,amount);
+    
       setMaterial(newMaterial);
       console.log(newMaterial)
     }
@@ -76,7 +68,16 @@ history.push("/admin/addMaterial");
       newMaterial.splice(index, 1);
       setMaterial(newMaterial);
     };
-
+  
+    const materialForm={
+      invoiceNumber: invoiceNumber,
+      supplier_id:supplier,
+      category: category,
+      item: item,
+      quantity:quantity,
+      unitPrice:unitPrice ,
+      amount: amount
+    }
 
   return (
     <div>

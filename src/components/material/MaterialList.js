@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useEffect, useState} from 'react'
 import {
     Breadcrumb,
     Button,
@@ -21,6 +21,27 @@ import {
   } from "@fortawesome/free-solid-svg-icons";
 
 const MaterialList = () => {
+  // const materialForm={
+  //   invoiceNumber: invoiceNumber,
+  //   supplier_id:supplier,
+  //   category: category,
+  //   item: item,
+  //   quantity:quantity,
+  //   unitPrice:unitPrice ,
+  //   amount: amount
+  // }
+
+  const [materialData, setMaterialData] = useState({materialList: []})
+
+  useEffect(() => {
+    const IncomesEndPoint = 'http://localhost:8000/tkMaterial/materials';
+    fetch(IncomesEndPoint).then(res=>res.json()) 
+
+    .then(([materialForm])  => {
+                    setMaterialData({materialList: materialForm    })
+                   console.log(materialForm); 
+                }) 
+    }, [])
   return (
 
       <Row>
@@ -101,25 +122,25 @@ const MaterialList = () => {
               <Table hover className="user-table align-items-center">
                 <thead>
                   <tr>
-                    <th className="border-bottom">Name</th>
-                    <th className="border-bottom">Email</th>
-                    <th className="border-bottom">Position</th>
-                    <th className="border-bottom">User Created at</th>
+                  <th className="border-bottom">Category</th>
+                    <th className="border-bottom">Item</th>
+                    <th className="border-bottom">Quantity</th>
+                    <th className="border-bottom">Unit Price</th>
+                    <th className="border-bottom">Amount</th>
+                    <th className="border-bottom">Supplier</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <Card.Link className="d-flex align-items-center">
-                        {/* <Image className="user-avatar rounded-circle me-3" /> */}
-                        <div className="d-block">
-                          <span className="fw-bold">Thomas Shelby</span>
-                        </div>
-                      </Card.Link>
+                      
+                        {materialData.materialList.category}
+                        
                     </td>
-                    <td>thomas@peaky-blinders.com</td>
-                    <td>Boss</td>
-                    <td>January 20, 1921</td>
+                    <td>{materialData.materialList.item}</td>
+                    <td>{materialData.materialList.quantity}</td>
+                    <td>{materialData.materialList.unitPrice}</td>
+                    <td>{materialData.materialList.amount}</td>
                   </tr>
                 </tbody>
               </Table>
