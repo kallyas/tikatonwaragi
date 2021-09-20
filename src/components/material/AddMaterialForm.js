@@ -1,24 +1,14 @@
 import React, { useState } from "react";
 import { Card, Form, Col, Row, Button, Table } from "react-bootstrap";
 import MaterialTable from "./MaterialTable";
+import {useHistory,} from "react-router-dom";
 
 const AddMaterialForm = () => {
   // Dropdown menu items
   const SUPPLIERS = ["white", "red", "blue", "black", "cream"];
 
   // Handle Adding an item on the form
-  const materialForm=[{
-    invoiceNumber: "",
-    supplier_id: "",
-    category: "",
-    item: "",
-    quantity:"",
-    unitPrice: "",
-    amount: "",
-    totalAmount: "",
-    discount: "",
-    paidAmount: "",
-  }]
+
   const [invoiceNumber, setInvoiceNumber] = useState("");
   const [supplier, setSupplier] = useState("");
   const [category, setCategory] = useState("");
@@ -30,9 +20,51 @@ const AddMaterialForm = () => {
   const [discount, setDiscount] = useState("");
   const [paidAmount, setPaidAmount] = useState("");
 
+  function getAmount() {
+    amount=unitPrice*quantity
+    setAmount(amount)
+  }
+
   const [materials, setMaterial]=useState([])
+  const materialForm={
+    invoiceNumber: invoiceNumber,
+    supplier_id:supplier,
+    category: category,
+    item: item,
+    quantity:quantity,
+    unitPrice:unitPrice ,
+    amount: amount
+  }
+  let history = useHistory();
+
+  // const [Details, setUserDetails] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault()
   
-  
+    // setUserDetails({...userDetails})
+    console.log(materialForm);
+    const materialEndPoint='http://localhost:8000/tkMaterial/materials'
+    
+    fetch(materialEndPoint, {
+      method: 'post',
+      headers:{
+          'Content-Type': 'application/json',
+          // 'Content-Type':'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify(materialForm),
+    })
+    .then(res=>{
+      return res.json()
+    })
+
+.then(data=> {
+console.log(data)
+
+})
+
+history.push("/admin/addMaterial");
+}   
+
    const addMaterial=()=>{
     const newMaterial=[...materials,{category,item,quantity,unitPrice,amount}]
       //  newMaterial.push(item,quantity,unitPrice,amount);
@@ -51,10 +83,11 @@ const AddMaterialForm = () => {
       <Card className="addMaterial">
         <Card.Title>Add Material Form</Card.Title>
         <Card.Body>
-          <Form>
+          <Form onSubmit={handleSubmit} method="POST" action="/admin/addMaterial">
             <Row className="mb-3">
               <Form.Group as={Col}>
                 <Form.Control
+                size="sm"
                   type="text"
                   placeholder="Invoice Number"
                   name="invoiceNumber"
@@ -65,6 +98,7 @@ const AddMaterialForm = () => {
 
               <Form.Group as={Col}>
                 <Form.Select
+                size="sm"
                   defaultValue="Select Supplier"
                   name="supplier"
                   value={supplier}
@@ -109,6 +143,7 @@ const AddMaterialForm = () => {
               
               <Form.Group as={Col}>
                 <Form.Control
+                size="sm"
                   placeholder="Category"
                   name="category"
                   value={category}
@@ -117,6 +152,7 @@ const AddMaterialForm = () => {
               </Form.Group>
               <Form.Group as={Col}>
                 <Form.Control
+                size="sm"
                   placeholder="Item"
                   name="item"
                   value={item}
@@ -125,6 +161,7 @@ const AddMaterialForm = () => {
               </Form.Group>
               <Form.Group as={Col}>
                 <Form.Control
+                size="sm"
                   placeholder="Quantity"
                   name="quantity"
                   value={quantity}
@@ -133,6 +170,7 @@ const AddMaterialForm = () => {
               </Form.Group>
               <Form.Group as={Col}>
                 <Form.Control
+                size="sm"
                   placeholder="Unit price"
                   name="unitPrice"
                   value={unitPrice}
@@ -140,17 +178,23 @@ const AddMaterialForm = () => {
                 />
               </Form.Group>
               <Form.Group as={Col}>
+                {materials.amount}
                 <Form.Control
+                size="sm"
                   placeholder="Amount"
                   name="amount"
                   value={amount}
                   onChange={(event) =>setAmount(event.target.value)}
                 />
               </Form.Group>
-            </Row>
-            <Button variant="primary" size="sm" onClick={() => addMaterial()}>
+              <Form.Group as={Col}>
+              <Button variant="primary" size="sm" onClick={() => addMaterial()}>
               Add item
             </Button>
+              </Form.Group>
+             
+            </Row>
+          
             <hr />
 
             <Row className="mb-3">
