@@ -1,12 +1,8 @@
 import React from 'react'
-import {
-    Button,
-    Table,
-  } from "react-bootstrap";
+import {Button,} from "react-bootstrap";
 
 const MaterialTable = ({ material, index,removeMaterial }) => {
-  return (
-   
+  return (  
                 <tbody>
                   <tr>
                     <td>
@@ -16,7 +12,7 @@ const MaterialTable = ({ material, index,removeMaterial }) => {
                     <td>{material.quantity}</td>
                     <td>{material.unitPrice}</td>
                     <td>{material.amount}</td>
-                    <td> <Button variant="outline-danger" onClick={() => removeMaterial(index)}>✕</Button></td>
+                    <td> <Button variant="danger" onClick={() => removeMaterial(index)}>✕</Button></td>
                   </tr>
                 </tbody>
               

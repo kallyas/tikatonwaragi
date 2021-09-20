@@ -1,16 +1,17 @@
 import React from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faBackward, faHome, faUser } from "@fortawesome/free-solid-svg-icons";
-import SideBarData  from '../components/material/SidenavData';
+import SideBarData  from '../components/dashboard/SidenavData';
 
 const Sidebar2 = () => {
   return (
-    <div className="">
+    <div className="side-menu">
       <div className="top-menu">
         <div className="logo">
           <h3>Tikaton</h3>
         </div>          
       </div>
+      <hr/>
       <div className="bottom-menu">
       <ul className="side-bar-list">
           {SideBarData.map((val,key)=>{

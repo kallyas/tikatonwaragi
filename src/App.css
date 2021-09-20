@@ -16,7 +16,7 @@ body{
 }
 .dashboard{
   width: 100vw;
-  height: 100vh;
+  height: 120vh;
   padding:10px;
   background-color: #13C4A3;
   display: flex;
@@ -27,10 +27,10 @@ body{
   /* position: absolute; */
   background-color: #DBCDCD;
   width: 200px;
-  height: 550px;
+  height: 100%;
   box-sizing: border-box;
-  margin:  5px 10px 5px 10px;
-  display: flex;
+  margin:  10px 10px 10px 10px;
+  
   }
 
 

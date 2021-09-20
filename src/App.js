@@ -9,11 +9,14 @@ import React from "react";
     import SignUp from '../src/screens/signup';
     import SignIn from '../src/screens/signin';
     import Material from '../src/screens/Material'
-    
-    import Admin from '../src/screens/administrator2'
+    import Admin from "../src/screens/adminScreen/administrator2"
+    import AddMaterial from "../src/screens/adminScreen/AddMaterial";
+    import ListMaterial from "../src/screens/adminScreen/ListMaterial"
     // import components
-    import Dashboard from '../src/components/material/Dashboard';
-    import Dashboard1 from '../src/components/material/Dashboard';
+    
+    import Dashboard from '../src/components/dashboard/Dashboard';
+    import Dashboard1 from '../src/components/dashboard/Dashboard';
+    
 
     function App() {
       return (
@@ -28,12 +31,16 @@ import React from "react";
             <Route path="/signup" component={SignUp} />
             <Route path="/adminstrator" component={Admin}/>
             <Route path="/material" component={Material}/>
+            
+            
+          
             <Route path="/admin" component={Admin} exact/>
-            <Route path="/admin/dash" component={Dashboard}/>
-            <Route path="/admin/dash1" component={Dashboard1}/>
-           
+            
+            <Route path="/admin/dash1" component={Dashboard}/>
+            <Route path="/admin/addMaterial" component={AddMaterial}/>
+            <Route path="/admin/materialList" component={ListMaterial}/>
           </Route>
-
+ 
 
           </Switch>
         </Router>

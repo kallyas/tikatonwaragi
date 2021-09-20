@@ -9,10 +9,11 @@ create table if not exists users(
 );
 create table if not exists materials(
     id int primary key auto_increment,
-    materialName varchar(80)not null,
+    item varchar(80)not null,
     quantity varchar(20)not null,
-    unitCost varchar(20)not null,
-    rate varchar(20)not null,
-    total varchar(20)not null,
-    supply_date date not null    
+    unitPrice varchar(20)not null,
+    amount varchar(20)not null,
+    category varchar(20)not null,
+    supplier_id varchar (45)not null , 
+    invoiceNumber varchar (45)not null
 );
