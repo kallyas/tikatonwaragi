@@ -21,7 +21,7 @@ import {
   } from "@fortawesome/free-solid-svg-icons";
 
 const MaterialList = () => {
-  // const materialForm={
+  // const material={
   //   invoiceNumber: invoiceNumber,
   //   supplier_id:supplier,
   //   category: category,
@@ -31,15 +31,15 @@ const MaterialList = () => {
   //   amount: amount
   // }
 
-  const [materialData, setMaterialData] = useState({materialList: []})
+  const [materialData, setMaterialData] = useState([])
 
   useEffect(() => {
-    const IncomesEndPoint = 'http://localhost:8000/tkMaterial/materials';
-    fetch(IncomesEndPoint).then(res=>res.json()) 
+    const MaterialEndPoint = 'http://localhost:8000/tkMaterial/materials';
+    fetch(MaterialEndPoint).then(res=>res.json()) 
 
-    .then(([materialForm])  => {
-                    setMaterialData({materialList: materialForm    })
-                   console.log(materialForm); 
+    .then((material)  => {
+                    setMaterialData( material)
+                   console.log(material); 
                 }) 
     }, [])
   return (
@@ -131,17 +131,28 @@ const MaterialList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      
-                        {materialData.materialList.category}
+                 
+                    
+                        {/* map over the users array */}
+        
+                        {materialData.map((material) => (
+          // display a <div> element with the user.name and user.type
+          // parent element needs to have a unique key
+          <tr key={material.invoiceNumber}>
+            <td>{material.category}</td>
+            <td>{material.item}</td>
+            
+                    
+                    <td>{material.quantity}</td>
+                    <td>{material.unitPrice}</td>
+                    <td>{material.amount}</td>
+                    <td>{material.supplier_id}</td>
+          </tr>
+        ))}
                         
-                    </td>
-                    <td>{materialData.materialList.item}</td>
-                    <td>{materialData.materialList.quantity}</td>
-                    <td>{materialData.materialList.unitPrice}</td>
-                    <td>{materialData.materialList.amount}</td>
-                  </tr>
+                  
+                   
+                  
                 </tbody>
               </Table>
             </Card.Body>
