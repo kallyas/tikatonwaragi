@@ -1,5 +1,6 @@
 const sql = require("./db.js");
-
+const { errorMessage, status, successMessage } = require('../helpers/status')
+const Helper = require('../helpers/validations.js');
 
 // constructor
 const User = function(user) {
@@ -19,7 +20,11 @@ User.create = (newuser, result) => {
       result(err, null);
       return;
     }
-
+    const hashedPassword = Helper.hashPassword(user_password);
+  const generateUserID = () => {
+    return 'U' + moment(new Date()).format("YYYYMMDDHHmmssSS")
+  }
+  const id = generateUserID()
     console.log("created user: ", { id: res.insertId, ...newuser });
     result(null, { id: res.insertId, ...newuser });
   });

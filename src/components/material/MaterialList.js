@@ -130,9 +130,7 @@ const MaterialList = () => {
                     <th className="border-bottom">Supplier</th>
                   </tr>
                 </thead>
-                <tbody>
-                 
-                    
+                <tbody>                   
                         {/* map over the users array */}
         
                         {materialData.map((material) => (
