@@ -2,6 +2,7 @@ const { errorMessage, status, successMessage } = require("../helpers/status");
 const Helper = require("../helpers/validations.js");
 const User = require("../models/userModel");
 
+
 // Create and Save a new user
 exports.create = (req, res) => {
   // Validate request
@@ -13,6 +14,7 @@ exports.create = (req, res) => {
 
   // Create a user
   const user = new User({
+    id:req.body.id,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     username: req.body.username,
@@ -44,11 +46,19 @@ exports.create = (req, res) => {
       errorMessage.error = "Please enter a valid Mobile Number";
       return res.status(status.bad).send(errorMessage);
     }
-    if (!Helper.validatePassword(password)) {
+    if (!Helper.validatePassword(user_password)) {
       errorMessage.error = "Password must be more than eight(8) characters";
       return res.status(status.bad).send(errorMessage);
     }
-    
+    const hashedPassword = Helper.hashPassword(user_password);
+  console.log(hashedPassword)
+  const generateUserID = () => {
+    return 'U' + moment(new Date()).format("YYYYMMDDHHmmssSS")
+  }
+
+  const id = generateUserID()
+  console.log(id)
+  
   });
 };
 

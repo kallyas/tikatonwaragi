@@ -1,10 +1,11 @@
 const sql = require("./db.js");
 const { errorMessage, status, successMessage } = require('../helpers/status')
 const Helper = require('../helpers/validations.js');
+const moment = require('moment')
 
 // constructor
 const User = function(user) {
-  
+  this.id=user.id
   this.firstName = user.firstName;
   this.lastName= user.lastName;
   this.username= user.username;
@@ -12,19 +13,31 @@ const User = function(user) {
   this.department= user.department;
   this.user_password= user.user_password;
   };
+  // const generateUserID = () => {
+  //   return 'U' + moment(new Date()).format("YYYYMMDDHHmmssSS")
+  // }
 
+  // const id = generateUserID()
+  // console.log(id)
+  
 User.create = (newuser, result) => {
-  sql.query("INSERT INTO users SET ?", newuser, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
-    const hashedPassword = Helper.hashPassword(user_password);
-  const generateUserID = () => {
-    return 'U' + moment(new Date()).format("YYYYMMDDHHmmssSS")
-  }
-  const id = generateUserID()
+ 
+  
+  const insertUser = "INSERT INTO users (id, firstName,lastName,username,phone,department,hashedPassword),VALUES ?;";
+  const values=[id, firstName,lastName,username,phone,department,user_password]
+  // sql.query("INSERT INTO users SET ?", newuser, (err, res) => {
+  //   if (err) {
+  //     console.log("error: ", err);
+  //     result(err, null);
+  //     return;
+  //   }
+    sql.query(insertUser, values,(err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+ 
     console.log("created user: ", { id: res.insertId, ...newuser });
     result(null, { id: res.insertId, ...newuser });
   });
