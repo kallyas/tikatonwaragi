@@ -3,7 +3,7 @@ import { Card, Form, Col, Row, Button, Table } from "react-bootstrap";
 import MaterialTable from "./MaterialTable";
 import {useHistory,} from "react-router-dom";
 
-const AddMaterialForm = () => {
+const AddProductForm = () => {
   // Dropdown menu items
   const SUPPLIERS = ["white", "red", "blue", "black", "cream"];
 
@@ -236,4 +236,4 @@ const [materials, setMaterial]=useState([])
   );
 };
 
-export default AddMaterialForm;
+export default AddProductForm ;

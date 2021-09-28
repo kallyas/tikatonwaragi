@@ -27,47 +27,47 @@ const SideData = [
             },
             {
               title: "List",
-              itemId: "admin/material/Lists",
+              itemId: "/admin/material/Lists",
             },
             {
               title: "History",
-              itemId: "/materials/History",
+              itemId: "admin/materials/History",
             },
           ],
         },
         {
           title: "Products",
           icon:<FontAwesomeIcon name="users" icon={faUser} />,
-          itemId: "/products",
+          itemId: "/admin/products",
           
           subNav: [
             {
               title: "New Products",
-              itemId: "/products/AddNew",
+              itemId: "/admin/products/AddNew",
             },
             {
               title: "Products List",
-              itemId: "/products/Lists",
+              itemId: "/admin/products/Lists",
             },
             {
               title: "Products History",
-              itemId: "/products/History",
+              itemId: "/admin/products/History",
             },
           ],
         },
         {
           title: "Supplier",
           icon:<FontAwesomeIcon name="users" icon={faShuttleVan} />,
-          itemId: "/suppliers",
+          itemId: "/admin/suppliers",
           
           subNav: [
             {
               title: "New Products",
-              itemId: "/Supplier/AddNew",
+              itemId: "/admin/Supplier/AddNew",
             },
             {
               title: "Supplier List",
-              itemId: "/Supplier/Lists",
+              itemId: "/admin/Supplier/Lists",
             },
                         
           ],
@@ -75,32 +75,32 @@ const SideData = [
         {
           title: "Sales",
           icon:<FontAwesomeIcon name="users" icon={faCashRegister} />,
-          itemId: "/sales",
+          itemId: "/admin/sales",
           subNav: [
             {
               title: "New Sales",
-              itemId: "/saless/AddNew",
+              itemId: "/admin/saless/AddNew",
             },
             
             {
               title: "Sales History",
-              itemId: "/sales/History",
+              itemId: "/admin/sales/History",
             },
           ],
         },
         {
           title: "Location",
           icon:<FontAwesomeIcon name="users" icon={faLandmark} />,
-          itemId: "/location",
+          itemId: "/admin/location",
           subNav: [
             {
               title: "New Location",
-              itemId: "/location/AddNew",
+              itemId: "/admin/location/AddNew",
             },
             
             {
               title: "Location History",
-              itemId: "/location/List",
+              itemId: "/admin/location/List",
             },
           ],
         },
