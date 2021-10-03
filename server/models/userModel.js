@@ -13,18 +13,20 @@ const User = function(user) {
   this.department= user.department;
   this.user_password= user.user_password;
   };
-  // const generateUserID = () => {
-  //   return 'U' + moment(new Date()).format("YYYYMMDDHHmmssSS")
-  // }
-
-  // const id = generateUserID()
-  // console.log(id)
-  
-User.create = (newuser, result) => {
  
   
-  const insertUser = "INSERT INTO users (id, firstName,lastName,username,phone,department,hashedPassword),VALUES ?;";
-  const values=[id, firstName,lastName,username,phone,department,user_password]
+User.create = (newuser, result) => {
+  const generateUserID = () => {
+    return 'U' + moment(new Date()).format("YYYYMMDDHHmmssSS")
+  }
+
+  newuser.id= generateUserID()
+  console.log(newuser.id)
+  newuser.user_password = Helper.hashPassword(newuser.user_password);
+  console.log(newuser.user_password)
+  
+  const insertUser = "INSERT INTO users (id, firstName,lastName,username,phone,department,user_password)  VALUES(?, ?, ?, ?, ?, ?,?)";
+  const values=[newuser.id, newuser.firstName,newuser.lastName,newuser.username,newuser.phone,newuser.department,newuser.user_password]
   // sql.query("INSERT INTO users SET ?", newuser, (err, res) => {
   //   if (err) {
   //     console.log("error: ", err);
