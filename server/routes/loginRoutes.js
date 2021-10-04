@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const Login = require("../controllers/loginController")
 
 //user login
-router.post('/login', Login.login);
+router.post('/login', Login.findUser);
 // Renew token
 // router.post('/renewToken', Login.generateNewToken);
 

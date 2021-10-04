@@ -1,37 +1,36 @@
-const sql = require("../models/db");
-const { errorMessage, status, successMessage } = require('../helpers/status')
-const Helper = require('../helpers/validations');
-const moment = require('moment')
-
-const jwt = require('jsonwebtoken');
+const { errorMessage, status, successMessage } = require("../helpers/status");
+const Helper = require("../helpers/validations.js");
+const User = require("../models/userModel");
 
 
-exports.login = async (req,res,next) =>{
-    const {username, user_password} = req.body;
-    if (Helper.isEmpty(username) || Helper.isEmpty(user_password)) {
-        errorMessage.error = 'Mobile Number or Password detail is missing';
-        return res.status(status.bad).send(errorMessage);
+// Find a single user with a userId
+exports.findUs = (req, res) => {
+  User.findById(req.params.userId, (err, data)  => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found user with username  ${req.params.userId}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving user with id " + req.params.userId,
+        });
       }
-      if (
-        !Helper.isValidMobileNumber(username) ||
-        !Helper.validatePassword(user_password)
-      ) {
-        errorMessage.error = 'Please enter a valid Mobile Number or Password';
-        return res.status(status.bad).send(errorMessage);
+    } else res.send(data);
+  });
+};
+exports.findUser = (req, res) => {
+  User.login(req.params.username, (err, data)  => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found user with username  ${req.params.username}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving user with id " + req.params.username,
+        });
       }
-      User.findById(req.params.userId, (err, data) => {
-        if (err) {
-          if (err.kind === "not_found") {
-            res.status(404).send({
-              message: `Not found user with id ${req.params.userId}.`,
-            });
-          } else {
-            res.status(500).send({
-              message: "Error retrieving user with id " + req.params.userId,
-            });
-          }
-        } else res.send(data);
-      });
-
-
-}
+    } else res.send(data);
+  });
+};

@@ -1,5 +1,11 @@
 # Tikaton Inventory Management system
-Tikaton is an alcohol company
+Tikaton app is an online inventory management system for a drinks producing factory.
+
+# Description
+A small description of the app;
+- It has production section which takes in raw materials and returns a finished product.
+- It has storage facility where all raw material and products are stored
+- It has a sales and distribution section where products are delivered to buyers and
 
 
 
