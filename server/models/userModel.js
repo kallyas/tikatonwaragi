@@ -143,7 +143,8 @@ User.removeAll = (result) => {
 // Login
 User.login = (username, result) => {
 
-  sql.query("SELECT * FROM users WHERE username = ?",username, (err, res) => {
+  const username=
+  sql.query(`SELECT * FROM users WHERE username = ${username}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -151,7 +152,6 @@ User.login = (username, result) => {
     }
 
     if (res.length) {
-      
       console.log("found user: ", res[0]);
       result(null, res[0]);
       return;
