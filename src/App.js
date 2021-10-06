@@ -11,7 +11,8 @@ import React from "react";
     import Material from '../src/screens/Material'
     import Admin from "../src/screens/adminScreen/administrator2"
     import AddMaterial from "../src/screens/adminScreen/AddMaterial";
-    import ListMaterial from "../src/screens/adminScreen/ListMaterial"
+    import ListMaterial from "../src/screens/adminScreen/ListMaterial";
+    import AddProduct from "../src/screens/adminScreen/AddProduct";
     // import components
     
     import Dashboard from '../src/components/dashboard/Dashboard';
@@ -39,6 +40,7 @@ import React from "react";
             <Route path="/admin/dash1" component={Dashboard}/>
             <Route path="/admin/addMaterial" component={AddMaterial}/>
             <Route path="/admin/materialList" component={ListMaterial}/>
+            <Route path="/admin/addProducts" component={AddProduct}/>
           </Route>
  
 

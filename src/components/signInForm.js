@@ -102,7 +102,7 @@ export default function SignInForm() {
                     </Form.Text>
                     <InputGroup
                       className="mb-3 mt-6"
-                      controlId="formBasicEmail"
+                     
                     >
                       <InputGroup.Text>
                         <FontAwesomeIcon icon={faUser} />
@@ -116,7 +116,7 @@ export default function SignInForm() {
                       />
                     </InputGroup>
 
-                    <InputGroup className="mb-3" controlId="formBasicPassword">
+                    <InputGroup className="mb-3">
                       <InputGroup.Text>
                         <FontAwesomeIcon icon={faLock} />
                       </InputGroup.Text>

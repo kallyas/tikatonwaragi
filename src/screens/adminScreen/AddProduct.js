@@ -2,10 +2,9 @@ import React from "react";
 
 import Sidebar2 from "../../components/sidebar";
 
-import AddMaterialForm from "../../components/material/AddMaterialForm";
-import Dashboard from "../../components/dashboard/Dashboard";
+import AddMaterialForm from "../../components/products/addProducts";
 
-function Adminstrator() {
+function AddMaterial() {
   return (
     <div className="dashboard">
       
@@ -14,12 +13,12 @@ function Adminstrator() {
         <Sidebar2/>
         </div >
         <div className="">
-        {/* <Dashboard/> */}
-        
+        {/* <Dashboard1/> */}
+        <AddMaterialForm />
           </div >
       
     </div>
   );
 }
 
-export default Adminstrator;
+export default AddMaterial;

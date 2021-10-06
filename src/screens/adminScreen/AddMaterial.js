@@ -12,7 +12,7 @@ function AddMaterial() {
             
         <Sidebar2/>
         </div >
-        <div className="data-display">
+        <div className="">
         {/* <Dashboard1/> */}
         <AddMaterialForm />
           </div >

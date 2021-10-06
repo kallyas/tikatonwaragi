@@ -142,9 +142,9 @@ User.removeAll = (result) => {
 
 // Login
 User.login = (username, result) => {
-
-  const username=
-  sql.query(`SELECT * FROM users WHERE username = ${username}`, (err, res) => {
+  const checkUser= "SELECT * FROM users WHERE username = ?";
+ 
+  sql.query(checkUser, [username], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -156,7 +156,7 @@ User.login = (username, result) => {
       result(null, res[0]);
       return;
     }
-
+    console.log(result)
     // not found user with the id
     result({ kind: "not_found" }, null);
   });

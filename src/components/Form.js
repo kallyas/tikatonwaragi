@@ -2,7 +2,7 @@ import React, { useState,  } from "react";
 import { Container, Col, Row, Button, Form, Card,InputGroup } from "react-bootstrap";
 import {useHistory,} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faIdBadge, faLock, faPhone, faSitemap, faUser,} from "@fortawesome/free-solid-svg-icons";
+import {faIdCard, faLock, faPhone, faSitemap, faUser,} from "@fortawesome/free-solid-svg-icons";
 
 const SignUpForm = () => {
   
@@ -71,7 +71,7 @@ history.push("/signin");
                       Please sign in here
                     </Form.Text>
                     <InputGroup className="mb-3 mt-6">
-                      <InputGroup.Text><FontAwesomeIcon icon={faIdBadge} /></InputGroup.Text>
+                      <InputGroup.Text><FontAwesomeIcon icon={faIdCard} /></InputGroup.Text>
                     
                       <Form.Control
                         type="text"
@@ -82,7 +82,7 @@ history.push("/signin");
                       />
                     </InputGroup>
                     <InputGroup className="mb-3 mt-6">
-                    <InputGroup.Text><FontAwesomeIcon icon={faIdBadge} /></InputGroup.Text>
+                    <InputGroup.Text><FontAwesomeIcon icon={faIdCard} /></InputGroup.Text>
                       <Form.Control
                         type="text"
                         placeholder="Enter the Last name"
