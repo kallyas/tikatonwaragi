@@ -14,6 +14,41 @@ body{
   padding: auto 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+/* Home Page CSS */
+.home-page{
+  background-color: #61dafb;
+  width: 98vw;
+  height: 120vh;
+  align-self: center;
+  margin: auto 0;
+}
+.home-page .home-top{
+  
+  margin:10px;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  margin: auto 0;
+  
+}
+.home-top-left{
+  width: 50%;
+  float: left;
+  padding: 20px;
+  margin:10px;
+  border: 2px solid red;
+  align-self: center;
+}
+.home-top-right{
+  width: 50%;
+  float: right;
+  padding: 20px;
+  border: 2px solid red;
+  margin:10px;
+  align-self: center;
+}
+/* Dashboard and admin CSS */
 .dashboard{
   width: 100vw;
   height: 120vh;

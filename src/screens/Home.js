@@ -3,10 +3,21 @@ import Navbar from '../components/Navbar'
 
 const Home = () => {
   return (   
-    <div>
+    <div className='home-page'>
       <Navbar/>
-      <h1>Welcome to our website!</h1>
-     
+      
+        <h1>Welcome to Tikaton!</h1>
+        <div className='home-top'>
+          Top
+          <div className='home-top-left'>
+left
+          </div >
+          <div className='home-top-right'>
+right
+          </div>
+        
+     </div>
+      
     </div>
   );
 };
