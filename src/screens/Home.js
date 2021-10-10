@@ -8,12 +8,12 @@ const Home = () => {
       
         <h1>Welcome to Tikaton!</h1>
         <div className='home-top'>
-          Top
+          
           <div className='home-top-left'>
-left
+text
           </div >
           <div className='home-top-right'>
-right
+image
           </div>
         
      </div>

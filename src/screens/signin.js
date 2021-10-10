@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import {
-  Container,
-  Col,
-  Row,
+
   Button,
   Form,
   Card,
   InputGroup,
   Alert,
 } from "react-bootstrap";
+
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Navbar from '../components/Navbar'
-import SignUpForm from '../components/signInForm';
+// import SignUpForm from '../components/signInForm';
 
 function SignIn() {
       const [username, setUsername] = useState("");
@@ -27,22 +26,77 @@ function SignIn() {
     };
   
     let history = useHistory()
+
+    const validate_input = () => {
+      // const { mobilenumber, password } = state
+      if ((userDetails.username ==="")&&(userDetails.user_password === "")) {
+        // Alert("Please Enter Mobile Number");
+        <Alert variant="danger">
+          <p>Username or password cannot be empty</p>
+        </Alert>
+        return false;
+
+      } else{ return true}
+      
+      
+    };
+  
+    const handleSubmit = async () => {
+      if (validate_input()) {
+        // // eslint-disable-next-line no-undef
+        const userEndPoint = "http://localhost:8000/tkUser/users";
+  
+        //  CookieManager.clearAll(true)
+  
+        await fetch(userEndPoint, {
+          method: "post",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userDetails),
+        })
+          .then((res) => {
+            // const cookie = JSON.stringify(res.headers.get('set-cookie'))
+            // const newCookie = AsyncStorage.setItem('Cookie', cookie)
+            // console.log(cookie)
+            // console.log(newCookie)
+            return res.json();
+          })
+  
+          .then((res) => {
+            if (res && res.status === "success") {
+              history.push("/admin");
+            } else if (res && res.status === "error") {
+              Alert.alert(
+                "Notification",
+                "Please enter a valid Mobile Number or Password",
+                [
+                  {
+                    text: "OK",
+                    onPress: () => history.push("/admin"),
+                  },
+                ],
+                { cancelable: false }
+              );
+            }
+          });
+      }
+    };
     
     return (
         <div className='home-page'>
             <Navbar/>
             <h1>Sign In</h1>
-            {/* <SignUpForm/> */}
-
-            <div className='home-top'>
-          Top
-          <Card className="mx-auto my-2">
+         <div className='home-top'>
+          
+          <Card className="mx-auto my-2" style={{ width: '30rem' }}>
             <Card.Body>
               <Card.Title>
-                <div className="mb-6">Login Form</div>
+                <div className="mb-6 mt-6">Login Form</div>
               </Card.Title>
-              <div className="mb-6">
-                <Form >
+              <div className="mb-6 mt-6 loginForm" >
+                <Form onSubmit={handleSubmit()}>
                   <div>
                     <Form.Text className="text-muted">
                       Please sign in here

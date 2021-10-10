@@ -14,7 +14,8 @@ const mysql=require('./models/db');
 const customerRoutes=require('./routes/routes.customer');
 const userRoutes=require('./routes/userRoutes');
 const materialRoutes=require('./routes/materialRoutes');
-const loginRoutes=require('./routes/loginRoutes')
+const loginRoutes=require('./routes/loginRoutes');
+const productRoutes=require('./routes/productRoutes');
 
 // port on which the server is running
 
@@ -55,6 +56,7 @@ app.use('/',loginRoutes);
 app.use('/tikaton', customerRoutes);
 app.use('/tkUser', userRoutes);
 app.use('/tkMaterial', materialRoutes);
+app.use('/tkProduct', productRoutes);
 
 const server = app.listen(port, () => {
     const { address, port } = server.address();
