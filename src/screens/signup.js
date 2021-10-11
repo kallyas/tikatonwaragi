@@ -8,7 +8,11 @@ function SignUp() {
     return (
         <div>
             <Navbar/>
-               <SignUpForm/>
+            
+            <h1>Sign In</h1>
+         <div className='home-top'>
+             
+             </div>
         </div>
     )
 }

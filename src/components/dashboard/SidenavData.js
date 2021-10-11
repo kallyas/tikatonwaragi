@@ -38,7 +38,7 @@ const SideData = [
         {
           title: "Products",
           icon:<FontAwesomeIcon name="users" icon={faUser} />,
-          itemId: "/admin/products",
+          itemId: "/admin/addProducts",
           
           subNav: [
             {

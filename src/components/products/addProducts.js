@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Form, Col, Row, Button, Table } from "react-bootstrap";
-import MaterialTable from "./MaterialTable";
+import MaterialTable from "../material/MaterialTable";
 import {useHistory,} from "react-router-dom";
 
 const AddProductForm = () => {
@@ -33,16 +33,16 @@ const AddProductForm = () => {
     event.preventDefault()
   
     // setUserDetails({...userDetails})
-    console.log(materialForm);
-    const materialEndPoint='http://localhost:8000/tkMaterial/materials'
+    console.log(productForm);
+    const productEndPoint='http://localhost:8000/tkproduct/products'
     
-    fetch(materialEndPoint, {
+    fetch(productEndPoint, {
       method: 'post',
       headers:{
           'Content-Type': 'application/json',
           // 'Content-Type':'application/x-www-form-urlencoded'
       },
-      body: JSON.stringify(materialForm),
+      body: JSON.stringify(productForm),
     })
     .then(res=>{
       return res.json()
@@ -53,23 +53,22 @@ console.log(data)
 
 })
 
-history.push("/admin/addMaterial");
+history.push("/admin/addproduct");
 }   
-const [materials, setMaterial]=useState([])
-   const addMaterial=()=>{
-    const newMaterial=[...materials,{category,item,quantity,unitPrice,amount}]
-      //  newMaterial.push(item,quantity,unitPrice,amount);
-    
-      setMaterial(newMaterial);
-      console.log(newMaterial)
+const [products, setproduct]=useState([])
+   const addproduct=()=>{
+    const newproduct=[...products,{category,item,quantity,unitPrice,amount}]
+         
+      setproduct(newproduct);
+      console.log(newproduct)
     }
-    const removeMaterial = (index) => {
-      const newMaterial = [...materials];
-      newMaterial.splice(index, 1);
-      setMaterial(newMaterial);
+    const removeproduct = (index) => {
+      const newproduct = [...products];
+      newproduct.splice(index, 1);
+      setproduct(newproduct);
     };
   
-    const materialForm={
+    const productForm={
       invoiceNumber: invoiceNumber,
       supplier_id:supplier,
       category: category,
@@ -81,10 +80,10 @@ const [materials, setMaterial]=useState([])
 
   return (
     <div>
-      <Card className="addMaterial">
-        <Card.Title>Add Material Form</Card.Title>
+      <Card className="addproduct">
+        <Card.Title>Add Products Form</Card.Title>
         <Card.Body>
-          <Form onSubmit={handleSubmit} method="POST" action="/admin/addMaterial">
+          <Form onSubmit={handleSubmit} method="POST" action="/admin/addproduct">
             <Row className="mb-3">
               <Form.Group as={Col}>
                 <Form.Control
@@ -129,13 +128,13 @@ const [materials, setMaterial]=useState([])
                 </thead>
                
                             
-              {materials.map((material, index) => (
+              {products.map((product, index) => (
             
-                <MaterialTable
+                <productTable
                 key={index}
                 index={index}
-                material={material}
-                removeMaterial={removeMaterial}
+                product={product}
+                removeproduct={removeproduct}
                 />
             
           ))}
@@ -179,7 +178,7 @@ const [materials, setMaterial]=useState([])
                 />
               </Form.Group>
               <Form.Group as={Col}>
-                {materials.amount}
+                {products.amount}
                 <Form.Control
                 size="sm"
                   placeholder="Amount"
@@ -189,7 +188,7 @@ const [materials, setMaterial]=useState([])
                 />
               </Form.Group>
               <Form.Group as={Col}>
-              <Button variant="primary" size="sm" onClick={() => addMaterial()}>
+              <Button variant="primary" size="sm" onClick={() => addproduct()}>
               Add item
             </Button>
               </Form.Group>

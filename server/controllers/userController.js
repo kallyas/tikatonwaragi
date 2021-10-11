@@ -31,33 +31,6 @@ exports.create = (req, res) => {
       });
     else res.send(data);
 
-    //   const created_on = moment(new Date());
-    if (
-      Helper.isEmpty(phone) ||
-      Helper.isEmpty(firstname) ||
-      Helper.isEmpty(lastname) ||
-      Helper.isEmpty(user_password)
-    ) {
-      errorMessage.error =
-        "Mobile Number,First name, last name and password fields cannot be empty";
-      return res.status(status.bad).send(errorMessage);
-    }
-    if (!Helper.isValidPhone(phone)) {
-      errorMessage.error = "Please enter a valid Mobile Number";
-      return res.status(status.bad).send(errorMessage);
-    }
-    if (!Helper.validatePassword(user_password)) {
-      errorMessage.error = "Password must be more than eight(8) characters";
-      return res.status(status.bad).send(errorMessage);
-    }
-    const hashedPassword = Helper.hashPassword(user_password);
-  console.log(hashedPassword)
-  const generateUserID = () => {
-    return 'U' + moment(new Date()).format("YYYYMMDDHHmmssSS")
-  }
-
-  const id = generateUserID()
-  console.log(id)
   
   });
 };

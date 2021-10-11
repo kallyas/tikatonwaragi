@@ -18,7 +18,7 @@ create table if not exists materials(
     invoiceNumber varchar (45)not null
 );
 
-let material = `create table if not exists material(
+create table if not exists material(
     id int primary key auto_increment,
     materialName varchar(255)not null,
     quantity varchar(20)not null,
@@ -28,4 +28,24 @@ let material = `create table if not exists material(
     date varchar(20)not null,
     supplierId varchar(255)not null,
     
-)`;
+);
+
+create table if not exists tika_transaction(
+    id int primary key,
+    tname varchar(255)not null,
+    t_category varchar(20)not null,
+    t_details varchar(20)not null,
+    t_type varchar(20)not null,
+    t_date varchar(20)not null,
+        
+);
+create table if not exists tika_sales(
+    id int primary key,
+    product_name varchar(255)not null,
+    s_quantity varchar(20)not null,
+    s_amount varchar(20)not null,
+    s_discount varchar(20)not null,
+    
+    t_date varchar(20)not null,
+        
+);

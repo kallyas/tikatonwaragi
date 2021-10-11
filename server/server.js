@@ -10,9 +10,12 @@ const cors=require('cors')
 dotenv.config();
 
 const mysql=require('./models/db');
+// Routes
 const customerRoutes=require('./routes/routes.customer');
 const userRoutes=require('./routes/userRoutes');
-const materialRoutes=require('./routes/materialRoutes')
+const materialRoutes=require('./routes/materialRoutes');
+const loginRoutes=require('./routes/loginRoutes');
+const productRoutes=require('./routes/productRoutes');
 
 // port on which the server is running
 
@@ -24,7 +27,7 @@ const app = express();
 //Express session
 const expressSession =require('express-session')({
   secret: 'secret',
-  // cookie: {maxAge : 60000},
+  cookie: {maxAge : 60000},
   resave: false,
   saveUninitialized: false
 });
@@ -49,9 +52,11 @@ app.use(cookieParser());
 // app.use(cors({
 //   origin: 'http://localhost:3000/'
 // }))
+app.use('/',loginRoutes);
 app.use('/tikaton', customerRoutes);
 app.use('/tkUser', userRoutes);
 app.use('/tkMaterial', materialRoutes);
+app.use('/tkProduct', productRoutes);
 
 const server = app.listen(port, () => {
     const { address, port } = server.address();
