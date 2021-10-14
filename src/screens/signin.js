@@ -44,7 +44,7 @@ function SignIn() {
     const handleSubmit = async () => {
       if (validate_input()) {
         // // eslint-disable-next-line no-undef
-        const userEndPoint = "http://localhost:8000/tkUser/users";
+        const userEndPoint = "http://localhost:8000/login";
   
         //  CookieManager.clearAll(true)
   
@@ -68,17 +68,8 @@ function SignIn() {
             if (res && res.status === "success") {
               history.push("/admin");
             } else if (res && res.status === "error") {
-              Alert.alert(
-                "Notification",
-                "Please enter a valid Mobile Number or Password",
-                [
-                  {
-                    text: "OK",
-                    onPress: () => history.push("/admin"),
-                  },
-                ],
-                { cancelable: false }
-              );
+             
+              <Alert >"Please enter a valid Mobile Number or Password"</Alert>
             }
           });
       }
@@ -87,16 +78,14 @@ function SignIn() {
     return (
         <div className='home-page'>
             <Navbar/>
-            <h1>Sign In</h1>
+            <h1>Login Form</h1>
          <div className='home-top'>
           
-          <Card className="mx-auto my-2" style={{ width: '30rem' }}>
+          <Card className="mx-auto my-2 card"  style={{ width: '30rem' }}>
             <Card.Body>
-              <Card.Title>
-                <div className="mb-6 mt-6">Login Form</div>
-              </Card.Title>
+              
               <div className="mb-6 mt-6 loginForm" >
-                <Form onSubmit={handleSubmit()}>
+                <Form onSubmit={handleSubmit}  >
                   <div>
                     <Form.Text className="text-muted">
                       Please sign in here
@@ -131,7 +120,7 @@ function SignIn() {
                     </InputGroup>
                   </div>
                   <div className="d-grid gap-2">
-                    <Button type="submit" variant="primary" name="submit">
+                    <Button className="loginbtn" type="submit" variant="primary" name="submit">
                       Submit
                     </Button>
                   </div>

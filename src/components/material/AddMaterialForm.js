@@ -81,7 +81,7 @@ const [materials, setMaterial]=useState([])
 
   return (
     <div>
-      <Card className="addMaterial">
+      <Card className="addCard">
         <Card.Title>Add Material Form</Card.Title>
         <Card.Body>
           <Form onSubmit={handleSubmit} method="POST" action="/admin/addMaterial">

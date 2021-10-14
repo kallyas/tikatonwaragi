@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   text-align: center;
-  background-color:   #61dafb;
+  background-color:   #13C4A3;
 }
 
 
@@ -13,11 +13,23 @@ body{
   margin: auto 0;
   padding: auto 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #250001;
+}
+
+.logo{
+  color: #FFF9EB;
+font-size: 50px;
+font-style: normal;
+font-weight: 400;
+line-height: 97px;
+letter-spacing: 0.01em;
+text-align: left;
+
 }
 
 /* Home Page CSS */
 .home-page{
-  background-color: #61dafb;
+  background-color: #13C4A3;
   width: 98vw;
   height: 120vh;
   align-self: center;
@@ -50,12 +62,33 @@ body{
   margin:10px;
   align-self: center;
 }
-
-.loginForm{
-  padding: 20px;
-  margin: 20px;
+/* login form */
+.card{
+  background-color: #FFF9EB;
+  font-family: Merriweather;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.01em;
   
 }
+.loginForm{
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #FFF9EB;
+
+
+}
+.loginForm .loginbtn{
+  background-color: #FCBA04;
+  color: #250001;
+  font-weight: bold;
+  font-size: large;
+}
+
+
 /* Dashboard and admin CSS */
 .dashboard{
   width: 100vw;
@@ -112,20 +145,20 @@ body{
 }
 .side-bar-list-item:hover{
   cursor: pointer;
-  background-color: blanchedalmond;
+  background-color: #FFF9EB;
 }
 .side-bar-list .side-bar-list-item #active{
-  background-color: blanchedalmond;
+  background-color: #FFF9EB;
 }
 
 .dashboard .data-display{
   /* position: fixed; */
-  background-color: #fff;
+  background-color: #FFF9EB;
   margin:  5px 10px 5px 10px;
   padding: 5px;
   width: 80vw;
 }
-.addMaterial{
+.addCard{
   background-color: #fff;
   padding: 20px;
   margin: 30px;

@@ -49,9 +49,7 @@ app.use(function(req, res, next) {
 });
 app.use(expressSession);
 app.use(cookieParser());
-// app.use(cors({
-//   origin: 'http://localhost:3000/'
-// }))
+
 app.use('/',loginRoutes);
 app.use('/tikaton', customerRoutes);
 app.use('/tkUser', userRoutes);
