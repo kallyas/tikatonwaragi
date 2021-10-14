@@ -26,7 +26,7 @@ create table if not exists products(
     rate int(45)not null,
     batch_no varchar(45)not null,
     amount int(45)not null,
-    product_date varchar(45)not null
+    product_date varchar(45)
 );
 
 create table if not exists tika_transaction(

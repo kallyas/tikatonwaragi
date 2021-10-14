@@ -1,24 +1,51 @@
 const sql = require("./db.js");
-
+const { errorMessage, status, successMessage } = require("../helpers/status");
+const Helper = require("../helpers/validations.js");
+const moment = require("moment");
 
   // constructor
 const Product = function(product) {
-  this.item = product.item;
-  this.quantity= product.quantity
-  this.amount= product.amount;
-  this.unitPrice= product.unitPrice;
+  this.productName= product.productName;
   this.category= product.category;
-  this.invoiceNumber=product.invoiceNumber;
-  this.supplier_id=product.supplier_id;
+  this.quantity= product.quantity;
+  this.batchNo= product.batchNo;
+  this.rate= product.rate;
+  this.amount= product.amount;
   };
 
   Product.create = (newproduct, result) => {
-  sql.query("INSERT INTO products SET ?", newproduct, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
+    const generateProductID = () => {
+      return "P" + moment(new Date()).format("YYYYMMDDHHmmssSS");
+    };
+  
+    newproduct.id = generateProductID ();
+    console.log(newproduct.id);
+   
+  
+    const insertProduct =
+      "INSERT INTO products (id, product_name,category,quantity,batch_no,rate,amount)  VALUES(?, ?, ?, ?, ?, ?,?)";
+    const values = [
+      newproduct.id,
+      newproduct.productName,
+      newproduct.category,
+      newproduct.quantity,
+     newproduct.batchNo,
+     newproduct.rate,
+     newproduct.amount,
+    ];
+  
+    sql.query(insertProduct, values, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+  // sql.query("INSERT INTO products SET ?", newproduct, (err, res) => {
+  //   if (err) {
+  //     console.log("error: ", err);
+  //     result(err, null);
+  //     return;
+  //   }
 
     console.log("created product: ", { id: res.insertId, ...newproduct });
     result(null, { id: res.insertId, ...newproduct });
@@ -26,7 +53,7 @@ const Product = function(product) {
 };
 
 Product.findById = (productId, result) => {
-  sql.query(`SELECT * FROM products WHERE id = ${productId}`, (err, res) => {
+  sql.query(`SELECT * FROM products WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -59,7 +86,7 @@ Product.getAll = result => {
 Product.updateById = (id, product, result) => {
   sql.query(
     "UPDATE products SET email = ?, name = ?, active = ? WHERE id = ?",
-    [product.email, product.name, product.active, id],
+    [id, product_name,category,quantity,batch_no,rate,amount],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
