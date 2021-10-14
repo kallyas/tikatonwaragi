@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card, Form, Col, Row, Button, Table } from "react-bootstrap";
-import MaterialTable from "../material/MaterialTable";
+import { Card, Form, Col, Row, Button } from "react-bootstrap";
+
 import {useHistory,} from "react-router-dom";
 
 const AddProductForm = () => {
@@ -9,22 +9,15 @@ const AddProductForm = () => {
 
   // Handle Adding an item on the form
 
-  const [invoiceNumber, setInvoiceNumber] = useState("");
-  const [supplier, setSupplier] = useState("");
+  const [productName, setProductName] = useState("");
+  
   const [category, setCategory] = useState("");
-  const [item, setItem] = useState("");
+  
   const [quantity, setQuantity] = useState("");
-  const [unitPrice, setUnitPrice] = useState("");
-  const [amount, setAmount] = useState("");
-  const [totalAmount, setTotalAmount] = useState("");
-  const [discount, setDiscount] = useState("");
-  const [paidAmount, setPaidAmount] = useState("");
-
-  function getAmount() {
-    amount=unitPrice*quantity
-    setAmount(amount)
-  }
-
+  const [batchNo, setBatchNo] = useState("");
+  const [rate, setRate] = useState("");
+  const [amount,setAmount]=useState("");
+  
 
   let history = useHistory();
 
@@ -34,7 +27,7 @@ const AddProductForm = () => {
   
     // setUserDetails({...userDetails})
     console.log(productForm);
-    const productEndPoint='http://localhost:8000/tkproduct/products'
+    const productEndPoint='http://localhost:8000/tkProduct/products'
     
     fetch(productEndPoint, {
       method: 'post',
@@ -55,56 +48,43 @@ console.log(data)
 
 history.push("/admin/addproduct");
 }   
-const [products, setproduct]=useState([])
-   const addproduct=()=>{
-    const newproduct=[...products,{category,item,quantity,unitPrice,amount}]
-         
-      setproduct(newproduct);
-      console.log(newproduct)
-    }
-    const removeproduct = (index) => {
-      const newproduct = [...products];
-      newproduct.splice(index, 1);
-      setproduct(newproduct);
-    };
-  
+ 
     const productForm={
-      invoiceNumber: invoiceNumber,
-      supplier_id:supplier,
+      productName:productName,
       category: category,
-      item: item,
       quantity:quantity,
-      unitPrice:unitPrice ,
-      amount: amount
+      rate:rate ,
+      batchNo: batchNo,
+      amount:amount
     }
 
   return (
     <div>
-      <Card className="addproduct">
+      <Card className="addCard">
         <Card.Title>Add Products Form</Card.Title>
         <Card.Body>
           <Form onSubmit={handleSubmit} method="POST" action="/admin/addproduct">
             <Row className="mb-3">
               <Form.Group as={Col}>
                 <Form.Control
-                size="sm"
+                
                   type="text"
-                  placeholder="Invoice Number"
-                  name="invoiceNumber"
-                  value={invoiceNumber}
-                  onChange={(event) => setInvoiceNumber(event.target.value)}
+                  placeholder="Product Name"
+                  name="productName"
+                  value={productName}
+                  onChange={(event) => setProductName(event.target.value)}
                 />
               </Form.Group>
 
               <Form.Group as={Col}>
                 <Form.Select
-                size="sm"
-                  defaultValue="Select Supplier"
-                  name="supplier"
-                  value={supplier}
-                  onChange={(event) => setSupplier(event.target.value)}
+               
+                  defaultValue="Product Category"
+                  name="productCategory"
+                  value={category}
+                  onChange={(event) => setCategory(event.target.value)}
                 >
-                  <option value="">Select Supplier</option>
+                  <option value="">Select a Category</option>
                   {SUPPLIERS.map((c) => (
                     <option key={c}>{c}</option>
                   ))}
@@ -112,56 +92,11 @@ const [products, setproduct]=useState([])
               </Form.Group>
             </Row>
             <hr />
-            <Row className="mb-3">
-         
-              <div>  
-              <Table hover className="user-table align-items-center">
-                <thead>
-                  <tr>
-                    <th className="border-bottom">Category</th>
-                    <th className="border-bottom">Item</th>
-                    <th className="border-bottom">Quantity</th>
-                    <th className="border-bottom">Unit Price</th>
-                    <th className="border-bottom">Amount</th>
-                    <th className="border-bottom">Action</th>
-                  </tr>
-                </thead>
+            <Row className="mb-3">         
+           
+              <Form.Group as={Col}>
+                <Form.Control
                
-                            
-              {products.map((product, index) => (
-            
-                <productTable
-                key={index}
-                index={index}
-                product={product}
-                removeproduct={removeproduct}
-                />
-            
-          ))}
-              </Table> 
-              </div>
-              
-              <Form.Group as={Col}>
-                <Form.Control
-                size="sm"
-                  placeholder="Category"
-                  name="category"
-                  value={category}
-                  onChange={(event) => setCategory(event.target.value)}
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Control
-                size="sm"
-                  placeholder="Item"
-                  name="item"
-                  value={item}
-                  onChange={(event) => setItem(event.target.value)}
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Control
-                size="sm"
                   placeholder="Quantity"
                   name="quantity"
                   value={quantity}
@@ -170,57 +105,33 @@ const [products, setproduct]=useState([])
               </Form.Group>
               <Form.Group as={Col}>
                 <Form.Control
-                size="sm"
-                  placeholder="Unit price"
-                  name="unitPrice"
-                  value={unitPrice}
-                  onChange={(event) =>setUnitPrice(event.target.value)}
+               
+                  placeholder="Batch Number"
+                  name="batchNo"
+                  value={batchNo}
+                  onChange={(event) =>setBatchNo(event.target.value)}
                 />
               </Form.Group>
+              </Row>
+            <hr />
+            
+          
+            <Row className="mb-3">
               <Form.Group as={Col}>
-                {products.amount}
                 <Form.Control
-                size="sm"
+                  placeholder="Rate"
+                  name="rate"
+                  value={rate}
+                  onChange={(event) =>setRate(event.target.value)}
+                />
+              </Form.Group>
+              
+              <Form.Group as={Col}>
+                <Form.Control
                   placeholder="Amount"
                   name="amount"
                   value={amount}
                   onChange={(event) =>setAmount(event.target.value)}
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-              <Button variant="primary" size="sm" onClick={() => addproduct()}>
-              Add item
-            </Button>
-              </Form.Group>
-             
-            </Row>
-          
-            <hr />
-
-            <Row className="mb-3">
-              <Form.Group as={Col}>
-                <Form.Control
-                  placeholder="Total Amount"
-                  name="totalAmount"
-                  value={totalAmount}
-                  onChange={(event) =>setTotalAmount(event.target.value)}
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Control
-                  placeholder="Discount"
-                  name="discount"
-                  value={discount}
-                  onChange={(event) =>setDiscount(event.target.value)}
-                />
-              </Form.Group>
-
-              <Form.Group as={Col}>
-                <Form.Control
-                  placeholder="Paid Amount"
-                  name="paidAmount"
-                  value={paidAmount}
-                  onChange={(event) =>setPaidAmount(event.target.value)}
                 />
               </Form.Group>
             </Row>

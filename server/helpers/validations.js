@@ -74,26 +74,26 @@ const empty = (input) => {
   }
 };
 
-const generateUserToken = (id, firstname, lastname, username, phone, department) => {
+const generateUserToken = (id, firstName, lastName, username, phone, department) => {
   const token = jwt.sign({
     id,
-    firstname,
-    lastname,
+    firstName,
+    lastName,
     username,
     phone,
     department
   },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: '30m' });
+    { expiresIn: 30000 });
   return token;
 
 };
 
-const generateRefreshToken = (id, firstname, lastname, username, phone, department) => {
+const generateRefreshToken = (id, firstName, lastName, username, phone, department) => {
   const refreshToken = jwt.sign({
     id,
-    firstname,
-    lastname,
+    firstName,
+    lastName,
     username,
     phone,
     department

@@ -18,16 +18,15 @@ create table if not exists materials(
     invoiceNumber varchar (45)not null
 );
 
-create table if not exists material(
-    id int primary key auto_increment,
-    materialName varchar(255)not null,
-    quantity varchar(20)not null,
-    unitCost varchar(20)not null,
-    rate varchar(20)not null,
-    total varchar(20)not null,
-    date varchar(20)not null,
-    supplierId varchar(255)not null,
-    
+create table if not exists products(
+    id varchar(80) primary key,
+    product_name varchar(255)not null,
+    category varchar(45)not null,
+    quantity int(45)not null,
+    rate int(45)not null,
+    batch_no varchar(45)not null,
+    amount int(45)not null,
+    product_date varchar(45)
 );
 
 create table if not exists tika_transaction(

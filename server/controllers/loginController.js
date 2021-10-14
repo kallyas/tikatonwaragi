@@ -38,7 +38,8 @@ const user = new User({
   user_password: req.body.user_password,
 });
 
-  User.login(req.body.username, (err, data)  => {
+  User.login(req.body.username,req.body.user_password, (err, data)  => {
+
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -50,11 +51,13 @@ const user = new User({
         });
       }
     } else {
+    
+      
       const token = Helper.generateUserToken(
-       req.body.id, req.body.firstName, req.body.lastName, req.body.username, req.body.department, req.body.phone, req.body.user_password
+       user.id, user.firstName, user.lastName, user.username, user.department, user.phone, user.user_password
       );
-      const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
-      // const refreshToken = Helper.generateRefreshToken(user.user_id, user.firstname, user.lastname, user.email, user.mobilenumber, user.dob, user.gender, user.currency, user.country);
+      // const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
+      const refreshToken = Helper.generateRefreshToken(user.id, user.firstName, user.lastName, user.username, user.department, user.phone, user.user_password);
       delete user_password;
       successMessage.data = user;
       successMessage.data.token = token;

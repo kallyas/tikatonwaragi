@@ -13,8 +13,8 @@ const Navbar = () => {
     return (
         <div>
            <Nav>
-            <NavLogo to="/">
-                Logo
+            <NavLogo to="/" className="logo">
+                Microfoods
             </NavLogo>
             <Bars />
 

@@ -141,7 +141,7 @@ User.removeAll = (result) => {
 };
 
 // Login
-User.login = (username, result) => {
+User.login = (username,user_password, result) => {
   const checkUser= "SELECT * FROM users WHERE username = ?";
  
   sql.query(checkUser, [username], (err, res) => {
@@ -152,11 +152,18 @@ User.login = (username, result) => {
     }
 
     if (res.length) {
+      if (!Helper.comparePassword(user_password, user_password)) {
+        errorMessage.error = 'The password you provided is incorrect';
+      }
       console.log("found user: ", res[0]);
+
+      
       result(null, res[0]);
+
       return;
     }
-    console.log(result)
+    
+    // console.log(result)
     // not found user with the id
     result({ kind: "not_found" }, null);
   });
