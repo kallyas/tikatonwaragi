@@ -81,11 +81,12 @@ text-align: left;
 
 
 }
-.loginForm .loginbtn{
+.loginbtn{
   background-color: #FCBA04;
   color: #250001;
   font-weight: bold;
   font-size: large;
+
 }
 
 
@@ -160,7 +161,17 @@ text-align: left;
 }
 .addCard{
   background-color: #fff;
-  padding: 20px;
+  padding: 10px;
   margin: 30px;
   
+}
+.addCard th{
+  font-size: 20px;
+
+  color: #250001;
+}
+.addCard td{
+  font-size: 18px;
+  font-weight: normal;
+  color: #250001;
 }

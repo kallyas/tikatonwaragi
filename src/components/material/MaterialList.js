@@ -62,7 +62,7 @@ const MaterialList = () => {
             </div>
             
             <div className="btn-toolbar mb-2 mb-md-2 mr-2">
-              <Button variant="primary" size="sm">
+              <Button variant="primary" size="sm" className="loginbtn">
                 <FontAwesomeIcon icon={faPlus} className="me-2"/> Add New 
               </Button>
             </div>
@@ -116,7 +116,7 @@ const MaterialList = () => {
           </div>
           <Card
             border="light"
-            className="table-wrapper table-responsive shadow-sm"
+            className="addCard"
           >
             <Card.Body>
               <Table hover className="user-table align-items-center">
