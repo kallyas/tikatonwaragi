@@ -17,13 +17,16 @@ const Product = function(product) {
     const generateProductID = () => {
       return "P" + moment(new Date()).format("YYYYMMDDHHmmssSS");
     };
-  
+    const productDate=()=>{
+      return  moment(new Date()).format("YYYYMMDD");
+    }
+    newproduct.product_date=productDate()
     newproduct.id = generateProductID ();
     console.log(newproduct.id);
    
   
     const insertProduct =
-      "INSERT INTO products (id, product_name,category,quantity,batch_no,rate,amount)  VALUES(?, ?, ?, ?, ?, ?,?)";
+      "INSERT INTO products (id, product_name,category,quantity,batch_no,rate,amount,product_date)  VALUES(?, ?,?, ?, ?, ?, ?,?)";
     const values = [
       newproduct.id,
       newproduct.productName,
@@ -32,6 +35,7 @@ const Product = function(product) {
      newproduct.batchNo,
      newproduct.rate,
      newproduct.amount,
+     newproduct.product_date
     ];
   
     sql.query(insertProduct, values, (err, res) => {

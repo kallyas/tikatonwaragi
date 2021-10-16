@@ -124,6 +124,7 @@ const ProductList = () => {
                   
                   <th className="border-bottom">Rate</th>
                   <th className="border-bottom">Amount</th>
+                  <th className="border-bottom">Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -140,6 +141,7 @@ const ProductList = () => {
                     <td>{product.batch_no}</td>
                     <td>{product.rate}</td>
                     <td>{product.amount}</td>
+                    <td>{product.product_date}</td>
                   </tr>
                 ))}
               </tbody>
