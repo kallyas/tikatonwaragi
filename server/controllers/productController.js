@@ -1,6 +1,6 @@
-const sale = require("../models/saleModel");
+const Product = require("../models/productModel");
 
-// Create and Save a new sale
+// Create and Save a new product
 exports.create = (req, res) => {
     // Validate request
     if (!req.body) {
@@ -9,9 +9,9 @@ exports.create = (req, res) => {
         });
       }
     
-      // Create a sale
-      const sale = new sale({
-        saleName: req.body.saleName,
+      // Create a product
+      const product = new Product({
+        productName: req.body.productName,
         category: req.body.category,
         quantity: req.body.quantity,
         batchNo: req.body.batchNo,
@@ -20,47 +20,47 @@ exports.create = (req, res) => {
         amount:req.body.amount
       });
     
-      // Save sale in the database
-      sale.create(sale, (err, data) => {
+      // Save product in the database
+      Product.create(product, (err, data) => {
         if (err)
           res.status(500).send({
             message:
-              err.message || "Some error occurred while creating the sale."
+              err.message || "Some error occurred while creating the product."
           });
         else res.send(data);
     });
 };
 
-// Retrieve all sales from the database.
+// Retrieve all products from the database.
 exports.findAll = (req, res) => {
-    sale.getAll((err, data) => {
+    Product.getAll((err, data) => {
         if (err)
           res.status(500).send({
             message:
-              err.message || "Some error occurred while retrieving sales."
+              err.message || "Some error occurred while retrieving products."
           });
         else res.send(data);
       });
 };
 
-// Find a single sale with a saleId
+// Find a single product with a productId
 exports.findOne = (req, res) => {
-    sale.findById(req.params.saleId, (err, data) => {
+    Product.findById(req.params.productId, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `Not found sale with id ${req.params.saleId}.`
+              message: `Not found product with id ${req.params.productId}.`
             });
           } else {
             res.status(500).send({
-              message: "Error retrieving sale with id " + req.params.saleId
+              message: "Error retrieving product with id " + req.params.productId
             });
           }
         } else res.send(data);
       });
 };
 
-// Update a sale identified by the saleId in the request
+// Update a product identified by the productId in the request
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {
@@ -69,18 +69,18 @@ exports.update = (req, res) => {
     });
   }
 
-  sale.updateById(
-    req.params.saleId,
-    new sale(req.body),
+  Product.updateById(
+    req.params.productId,
+    new product(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found sale with id ${req.params.saleId}.`
+            message: `Not found product with id ${req.params.productId}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating sale with id " + req.params.saleId
+            message: "Error updating product with id " + req.params.productId
           });
         }
       } else res.send(data);
@@ -88,31 +88,31 @@ exports.update = (req, res) => {
   );
 };
 
-// Delete a sale with the specified saleId in the request
+// Delete a product with the specified productId in the request
 exports.delete = (req, res) => {
-    sale.remove(req.params.saleId, (err, data) => {
+    Product.remove(req.params.productId, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `Not found sale with id ${req.params.saleId}.`
+              message: `Not found product with id ${req.params.productId}.`
             });
           } else {
             res.status(500).send({
-              message: "Could not delete sale with id " + req.params.saleId
+              message: "Could not delete product with id " + req.params.productId
             });
           }
-        } else res.send({ message: `sale was deleted successfully!` });
+        } else res.send({ message: `product was deleted successfully!` });
       });
 };
 
-// Delete all sales from the database.
+// Delete all products from the database.
 exports.deleteAll = (req, res) => {
-    sale.removeAll((err, data) => {
+    Product.removeAll((err, data) => {
         if (err)
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all sales."
+              err.message || "Some error occurred while removing all products."
           });
-        else res.send({ message: `All sales were deleted successfully!` });
+        else res.send({ message: `All products were deleted successfully!` });
       });
 };
