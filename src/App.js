@@ -14,6 +14,7 @@ import React from "react";
     import ListMaterial from "../src/screens/adminScreen/ListMaterial";
     import AddProduct from "../src/screens/adminScreen/AddProduct";
     import ListProduct from "../src/screens/adminScreen/ListProduct";
+    import AddSales from "../src/screens/adminScreen/AddSales";
     // import components
     
     import Dashboard from '../src/components/dashboard/Dashboard';
@@ -33,9 +34,6 @@ import React from "react";
             <Route path="/signup" component={SignUp} />
             <Route path="/adminstrator" component={Admin}/>
             <Route path="/material" component={Material}/>
-            
-            
-          
             <Route path="/admin" component={Admin} exact/>
             
             <Route path="/admin/dash1" component={Dashboard}/>
@@ -43,6 +41,8 @@ import React from "react";
             <Route path="/admin/materialList" component={ListMaterial}/>
             <Route path="/admin/addProducts" component={AddProduct}/>
             <Route path="/admin/productList" component={ListProduct}/>
+            <Route path="/admin/productList" component={ListProduct}/>
+            <Route path="/admin/sales" component={AddSales}/>
           </Route>
  
 

@@ -56,6 +56,22 @@ const SideData = [
           ],
         },
         {
+          title: "Sales",
+          icon:<FontAwesomeIcon name="users" icon={faCashRegister} />,
+          itemId: "/admin/sales",
+          subNav: [
+            {
+              title: "New Sales",
+              itemId: "/admin/saless/AddNew",
+            },
+            
+            {
+              title: "Sales History",
+              itemId: "/admin/sales/History",
+            },
+          ],
+        },
+        {
           title: "Supplier",
           icon:<FontAwesomeIcon name="users" icon={faShuttleVan} />,
           itemId: "/admin/suppliers",
@@ -72,22 +88,7 @@ const SideData = [
                         
           ],
         },
-        {
-          title: "Sales",
-          icon:<FontAwesomeIcon name="users" icon={faCashRegister} />,
-          itemId: "/admin/sales",
-          subNav: [
-            {
-              title: "New Sales",
-              itemId: "/admin/saless/AddNew",
-            },
-            
-            {
-              title: "Sales History",
-              itemId: "/admin/sales/History",
-            },
-          ],
-        },
+   
         {
           title: "Location",
           icon:<FontAwesomeIcon name="users" icon={faLandmark} />,
