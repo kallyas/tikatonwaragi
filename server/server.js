@@ -16,6 +16,7 @@ const userRoutes=require('./routes/userRoutes');
 const materialRoutes=require('./routes/materialRoutes');
 const loginRoutes=require('./routes/loginRoutes');
 const productRoutes=require('./routes/productRoutes');
+const saleRoutes=require('./routes/salesRoutes')
 
 // port on which the server is running
 
@@ -55,6 +56,7 @@ app.use('/tikaton', customerRoutes);
 app.use('/tkUser', userRoutes);
 app.use('/tkMaterial', materialRoutes);
 app.use('/tkProduct', productRoutes);
+app.use('/tkSales',saleRoutes)
 
 const server = app.listen(port, () => {
     const { address, port } = server.address();
