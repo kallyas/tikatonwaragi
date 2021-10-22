@@ -1,10 +1,86 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { Card, Form, Col, Row, Button, Table } from "react-bootstrap";
+import MaterialTable from "../../components/material/MaterialTable";
+import {useHistory,} from "react-router-dom";
 import Sidebar2 from "../../components/sidebar";
 
-import AddMaterialForm from "../../components/products/addProducts";
+
 
 function AddMaterial() {
+      // Dropdown menu items
+  const SUPPLIERS = ["white", "red", "blue", "black", "cream"];
+
+  // Handle Adding an item on the form
+
+  const [invoiceNumber, setInvoiceNumber] = useState("");
+  const [supplier, setSupplier] = useState("");
+  const [category, setCategory] = useState("");
+  const [item, setItem] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [unitPrice, setUnitPrice] = useState("");
+  const [amount, setAmount] = useState("");
+  const [totalAmount, setTotalAmount] = useState("");
+  const [discount, setDiscount] = useState("");
+  const [paidAmount, setPaidAmount] = useState("");
+
+  function getAmount() {
+    amount=unitPrice*quantity
+    setAmount(amount)
+  }
+
+
+  let history = useHistory();
+
+  // const [Details, setUserDetails] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault()
+  
+    // setUserDetails({...userDetails})
+    console.log(materialForm);
+    const materialEndPoint='http://localhost:8000/tkMaterial/materials'
+    
+    fetch(materialEndPoint, {
+      method: 'post',
+      headers:{
+          'Content-Type': 'application/json',
+          // 'Content-Type':'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify(materialForm),
+    })
+    .then(res=>{
+      return res.json()
+    })
+
+.then(data=> {
+console.log(data)
+
+})
+
+history.push("/admin/addMaterial");
+}   
+const [materials, setMaterial]=useState([])
+   const addMaterial=()=>{
+    const newMaterial=[...materials,{category,item,quantity,unitPrice,amount}]
+      //  newMaterial.push(item,quantity,unitPrice,amount);
+    
+      setMaterial(newMaterial);
+      console.log(newMaterial)
+    }
+    const removeMaterial = (index) => {
+      const newMaterial = [...materials];
+      newMaterial.splice(index, 1);
+      setMaterial(newMaterial);
+    };
+  
+    const materialForm={
+      invoiceNumber: invoiceNumber,
+      supplier_id:supplier,
+      category: category,
+      item: item,
+      quantity:quantity,
+      unitPrice:unitPrice ,
+      amount: amount
+    }
   return (
     <div className="dashboard">
       
@@ -16,7 +92,7 @@ function AddMaterial() {
         {/* <Dashboard1/> */}
         <div>
       <Card className="addCard">
-        <Card.Title>Add Material Form</Card.Title>
+        <Card.Title>Sales Form</Card.Title>
         <Card.Body>
           <Form onSubmit={handleSubmit} method="POST" action="/admin/addMaterial">
             <Row className="mb-3">
