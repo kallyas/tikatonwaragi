@@ -17,11 +17,11 @@ const ProductDropdown = () => {
       });
   }, []);
 
-  const products = PRODUCTS.map((PRODUCTS) => {
+  const products = PRODUCTS.map((item) => {
     <option 
-    key={PRODUCTS.value}
-    value={PRODUCTS.value}
-    >{PRODUCTS.product_name}</option>;
+    key={item.value}
+    value={item.value}
+    >{item.product_name}</option>;
   });
 
   return (
@@ -30,8 +30,8 @@ const ProductDropdown = () => {
         size="sm"
         defaultValue="Select Supplier"
         name="product"
-        value={products}
-        onChange={(event) => setproductData(event.target.value)}
+        value={productOption}
+        onChange={(event) => setProductOption(event.target.value)}
       >
         <option value="">Select Products</option>
         {products}
