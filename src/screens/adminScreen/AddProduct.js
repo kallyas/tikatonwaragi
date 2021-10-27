@@ -4,7 +4,7 @@ import Sidebar2 from "../../components/sidebar";
 
 import AddMaterialForm from "../../components/products/addProducts";
 
-function AddMaterial() {
+function AddProduct() {
   return (
     <div className="dashboard">
       
@@ -21,4 +21,4 @@ function AddMaterial() {
   );
 }
 
-export default AddMaterial;
+export default AddProduct;

@@ -6,7 +6,7 @@ import {useHistory,} from "react-router-dom";
 const AddProductForm = () => {
   // Dropdown menu items
   const SUPPLIERS = ["white", "red", "blue", "black", "cream"];
-
+  const totalAmount=[];
   // Handle Adding an item on the form
 
   const [productName, setProductName] = useState("");
@@ -16,7 +16,7 @@ const AddProductForm = () => {
   const [quantity, setQuantity] = useState("");
   const [batchNo, setBatchNo] = useState("");
   const [rate, setRate] = useState("");
-  const [amount,setAmount]=useState("");
+  const [amount,setAmount]=useState(totalAmount);
   
 
   let history = useHistory();
