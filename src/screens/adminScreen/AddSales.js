@@ -11,7 +11,7 @@ function AddSales() {
   const [customerName, setcustomerName] = useState("");
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("");
-  // const [productName, setproductName] = useState("");
+  const [productName, setproductName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [unitPrice, setUnitPrice] = useState("");
   const [amount, setAmount] = useState("");
