@@ -48,3 +48,11 @@ create table if not exists tika_sales(
     payment_mode varchar(10), 
     sale_date varchar(20)not null     
 );
+
+create table if not exists customers(
+    customer_id varchar (40)primary key,
+    customer_name varchar(255)not null,
+    customer_location varchar(20),
+    contact varchar(20)
+      
+);

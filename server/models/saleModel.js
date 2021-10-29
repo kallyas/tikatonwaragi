@@ -3,50 +3,60 @@ const { errorMessage, status, successMessage } = require("../helpers/status");
 const Helper = require("../helpers/validations.js");
 const moment = require("moment");
 
-  // constructor
-const Sale = function(sale) {
-  this.product_name= sale.product_name;
-  this.category= sale.category;
-  this.quantity= sale.quantity;
-  
-  this.unit_price =sale.unit_price;
-  this.amount= sale.amount;
-  this.sale_date= sale.sale_date;
-  this.payment_mode=sale.payment_mode
-  };
+// constructor
+const Sale = function (sale) {
+  this.product_name = sale.product_name;
+  this.category = sale.category;
+  this.quantity = sale.quantity;
+
+  this.unit_price = sale.unit_price;
+  this.amount = sale.amount;
+  this.sale_date = sale.sale_date;
+  this.payment_mode = sale.payment_mode;
+};
 // Create model for sales
-  Sale.create = (newsale, result) => {
-    const generatesaleID = () => {
-      return "P" + moment(new Date()).format("YYYYMMDDHHmmssSS");
-    };
-    const saleDate=()=>{
-      return  moment(new Date()).format("YYYYMMDD");
+Sale.create = (newsale, result) => {
+  const generatesaleID = () => {
+    return "P" + moment(new Date()).format("YYYYMMDDHHmmssSS");
+  };
+  const generateCustomerID = () => {
+    return "C" + moment(new Date()).format("YYYYMMDDHHmmssSS");
+  };
+  const saleDate = () => {
+    return moment(new Date()).format("YYYYMMDD");
+  };
+  newsale.sale_date = saleDate();
+  newsale.id = generatesaleID();
+  newsale.customer_id=generateCustomerID()
+  console.log(newsale.id,newsale.customer_id);
+
+  // Inserting into tables sales and customer tables
+  const insertsale =
+    "INSERT INTO tika_sales (id, product_name,category,quantity,unit_price,amount,sale_date)  VALUES(?, ?,?, ?, ?, ?, ?)";
+  const insertCustomer =
+    "INSERT INTO customers (customer_id, customer_name, location)  VALUES(?, ?,?)";
+  const values = [
+    newsale.id,
+    newsale.customer_id,
+    newsale.product_name,
+    newsale.category,
+    newsale.quantity,
+    newsale.unit_price,
+    newsale.amount,
+    newsale.sale_date,
+    newsale.payment_mode,
+    newsale.customer_name,
+    newsale.customer_location,
+  ];
+  // const insertCustomer = "INSERT INTO customers (id, customer_name, location)  VALUES(?, ?,?)";
+
+  sql.query(insertsale, insertCustomer, values, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
     }
-    newsale.sale_date=saleDate()
-    newsale.id = generatesaleID ();
-    console.log(newsale.id);
-   
-  
-    const insertsale =
-      "INSERT INTO tika_sales (id, product_name,category,quantity,unit_price,amount,sale_date)  VALUES(?, ?,?, ?, ?, ?, ?)";
-    const values = [
-      newsale.id,
-      newsale.product_name,
-      newsale.category,
-     newsale.quantity,
-     newsale.unit_price,
-     newsale.amount,
-     newsale.sale_date,
-     newsale.payment_mode,
-    ];
-  
-    sql.query(insertsale, values, (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(err, null);
-        return;
-      }
-//  print result in terminal
+    //  print result in terminal
     console.log("created sale: ", { id: res.insertId, ...newsale });
     result(null, { id: res.insertId, ...newsale });
   });
@@ -70,8 +80,8 @@ Sale.findById = (id, result) => {
   });
 };
 
-Sale.getAll = result => {
-  sql.query("SELECT * FROM tika_sales", (err, res) => {
+Sale.getAll = (result) => {
+  sql.query("SELECT * FROM tika_sales,customers", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -85,8 +95,17 @@ Sale.getAll = result => {
 
 Sale.updateById = (id, sale, result) => {
   sql.query(
-    "UPDATE tika_sales SET sale_name = ?, category = ?, quantity = ? sale_date = ?  unit_price= ? amount= ? payment_mode=? WHERE id = ?",
-    [id, product_name,category,quantity,unit_price,amount,sale_date,payment_mode],
+    "UPDATE tika_sales SET product_name = ?, category = ?, quantity = ? sale_date = ?  unit_price= ? amount= ? payment_mode=? WHERE id = ?",
+    [
+      id,
+      product_name,
+      category,
+      quantity,
+      unit_price,
+      amount,
+      sale_date,
+      payment_mode,
+    ],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -125,7 +144,7 @@ Sale.remove = (id, result) => {
   });
 };
 
-Sale.removeAll = result => {
+Sale.removeAll = (result) => {
   sql.query("DELETE FROM tika_sales", (err, res) => {
     if (err) {
       console.log("error: ", err);

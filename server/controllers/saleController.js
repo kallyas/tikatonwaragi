@@ -11,11 +11,11 @@ exports.create = (req, res) => {
     
       // Create a sale
       const sale = new Sale({
+        customer_name:req.body.customer_name,
+        customer_location:req.body.customer_location,
         product_name: req.body.product_name,
         category: req.body.category,
-        quantity: req.body.quantity,
-        
-        
+        quantity: req.body.quantity,       
         unit_price :req.body.unit_price,
         amount:req.body.amount,
         sale_date: req.body.sale_date,
