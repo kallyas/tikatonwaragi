@@ -1,4 +1,4 @@
-const sale = require("../models/saleModel");
+const Sale = require("../models/saleModel");
 
 // Create and Save a new sale
 exports.create = (req, res) => {
@@ -10,18 +10,20 @@ exports.create = (req, res) => {
       }
     
       // Create a sale
-      const sale = new sale({
-        saleName: req.body.saleName,
+      const sale = new Sale({
+        customer_name:req.body.customer_name,
+        customer_location:req.body.customer_location,
+        product_name: req.body.product_name,
         category: req.body.category,
-        quantity: req.body.quantity,
-        batchNo: req.body.batchNo,
-        
-        rate :req.body.rate,
-        amount:req.body.amount
+        quantity: req.body.quantity,       
+        unit_price :req.body.unit_price,
+        amount:req.body.amount,
+        sale_date: req.body.sale_date,
+        payment_mode:req.body.payment_mode,
       });
     
       // Save sale in the database
-      sale.create(sale, (err, data) => {
+      Sale.create(sale, (err, data) => {
         if (err)
           res.status(500).send({
             message:
@@ -33,7 +35,7 @@ exports.create = (req, res) => {
 
 // Retrieve all sales from the database.
 exports.findAll = (req, res) => {
-    sale.getAll((err, data) => {
+    Sale.getAll((err, data) => {
         if (err)
           res.status(500).send({
             message:
@@ -45,7 +47,7 @@ exports.findAll = (req, res) => {
 
 // Find a single sale with a saleId
 exports.findOne = (req, res) => {
-    sale.findById(req.params.saleId, (err, data) => {
+    Sale.findById(req.params.saleId, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
@@ -69,7 +71,7 @@ exports.update = (req, res) => {
     });
   }
 
-  sale.updateById(
+  Sale.updateById(
     req.params.saleId,
     new sale(req.body),
     (err, data) => {
@@ -90,7 +92,7 @@ exports.update = (req, res) => {
 
 // Delete a sale with the specified saleId in the request
 exports.delete = (req, res) => {
-    sale.remove(req.params.saleId, (err, data) => {
+    Sale.remove(req.params.saleId, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
@@ -107,7 +109,7 @@ exports.delete = (req, res) => {
 
 // Delete all sales from the database.
 exports.deleteAll = (req, res) => {
-    sale.removeAll((err, data) => {
+    Sale.removeAll((err, data) => {
         if (err)
           res.status(500).send({
             message:

@@ -9,7 +9,7 @@ function AddSales() {
   // Handle Adding an item on the form
 
   const [customerName, setcustomerName] = useState("");
-  const [location, setLocation] = useState("");
+  const [customer_location, setLocation] = useState("");
   const [category, setCategory] = useState("");
   const [productName, setproductName] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -68,7 +68,7 @@ function AddSales() {
                       size="sm"
                       type="text"
                       placeholder="customerName"
-                      name="customerName"
+                      name="customer_name"
                       value={customerName}
                       onChange={(event) => setcustomerName(event.target.value)}
                     />
@@ -79,7 +79,7 @@ function AddSales() {
                       size="sm"
                       placeholder="location"
                       name="location"
-                      value={location}
+                      value={customer_location}
                       onChange={(event) => setLocation(event.target.value)}
                     />
                   </Form.Group>
@@ -117,7 +117,7 @@ function AddSales() {
                     <Form.Control
                       size="sm"
                       placeholder="Unit price"
-                      name="unitPrice"
+                      name="unit_price"
                       value={unitPrice}
                       onChange={(event) => setUnitPrice(event.target.value)}
                     />
@@ -140,7 +140,7 @@ function AddSales() {
                   <Form.Group as={Col}>
                     <Form.Control
                       placeholder="Payment Mode"
-                      name="paymentMode"
+                      name="payment_mode"
                       value={paymentMode}
                       onChange={(event) => setpaymentMode(event.target.value)}
                     />
