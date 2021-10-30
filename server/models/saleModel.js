@@ -13,21 +13,21 @@ const Sale = function (sale) {
   this.amount = sale.amount;
   this.sale_date = sale.sale_date;
   this.payment_mode = sale.payment_mode;
+  this.customer_name=sale.customer_name
+  this.customer_location=sale.customer_location
 };
 // Create model for sales
 Sale.create = (newsale, result) => {
   const generatesaleID = () => {
     return "P" + moment(new Date()).format("YYYYMMDDHHmmssSS");
   };
-  const generateCustomerID = () => {
-    return "C" + moment(new Date()).format("YYYYMMDDHHmmssSS");
-  };
+ 
   const saleDate = () => {
     return moment(new Date()).format("YYYYMMDD");
   };
   newsale.sale_date = saleDate();
   newsale.id = generatesaleID();
-  newsale.customer_id=generateCustomerID()
+  
   console.log(newsale.id,newsale.customer_id);
 
   // Inserting into tables sales and customer tables
@@ -37,7 +37,7 @@ Sale.create = (newsale, result) => {
     "INSERT INTO customers (customer_id, customer_name, location)  VALUES(?, ?,?)";
   const values = [
     newsale.id,
-    newsale.customer_id,
+    
     newsale.product_name,
     newsale.category,
     newsale.quantity,
@@ -45,12 +45,15 @@ Sale.create = (newsale, result) => {
     newsale.amount,
     newsale.sale_date,
     newsale.payment_mode,
+  ]
+  const customerValues=[
+    newsale.customer_id,
     newsale.customer_name,
     newsale.customer_location,
   ];
   // const insertCustomer = "INSERT INTO customers (id, customer_name, location)  VALUES(?, ?,?)";
 
-  sql.query(insertsale, insertCustomer, values, (err, res) => {
+  sql.query(insertsale, values, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

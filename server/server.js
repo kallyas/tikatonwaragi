@@ -52,7 +52,7 @@ app.use(expressSession);
 app.use(cookieParser());
 
 app.use('/',loginRoutes);
-app.use('/tikaton', customerRoutes);
+app.use('/tkCustomer', customerRoutes);
 app.use('/tkUser', userRoutes);
 app.use('/tkMaterial', materialRoutes);
 app.use('/tkProduct', productRoutes);
