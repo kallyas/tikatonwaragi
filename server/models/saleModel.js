@@ -13,28 +13,27 @@ const Sale = function (sale) {
   this.amount = sale.amount;
   this.sale_date = sale.sale_date;
   this.payment_mode = sale.payment_mode;
-  this.customer_name=sale.customer_name
-  this.customer_location=sale.customer_location
 };
 // Create model for sales
 Sale.create = (newsale, result) => {
   const generatesaleID = () => {
     return "P" + moment(new Date()).format("YYYYMMDDHHmmssSS");
   };
- 
+  const generateCustomerID = () => {
+    return "C" + moment(new Date()).format("YYYYMMDDHHmmssSS");
+  };
   const saleDate = () => {
     return moment(new Date()).format("YYYYMMDD");
   };
   newsale.sale_date = saleDate();
   newsale.id = generatesaleID();
-  
+  newsale.customer_id=generateCustomerID()
   console.log(newsale.id,newsale.customer_id);
 
   // Inserting into tables sales and customer tables
   const insertsale =
-    "INSERT INTO tika_sales (id, product_name,category,quantity,unit_price,amount,sale_date)  VALUES(?, ?,?, ?, ?, ?, ?)";
-  const insertCustomer =
-    "INSERT INTO customers (customer_id, customer_name, location)  VALUES(?, ?,?)";
+    "INSERT INTO tika_sales (id, product_name,category,quantity,unit_price,amount,sale_date)  VALUES(?, ?,?, ?, ?, ?, ?,?)";
+
   const values = [
     newsale.id,
     
@@ -46,11 +45,7 @@ Sale.create = (newsale, result) => {
     newsale.sale_date,
     newsale.payment_mode,
   ]
-  const customerValues=[
-    newsale.customer_id,
-    newsale.customer_name,
-    newsale.customer_location,
-  ];
+ 
   // const insertCustomer = "INSERT INTO customers (id, customer_name, location)  VALUES(?, ?,?)";
 
   sql.query(insertsale, values, (err, res) => {

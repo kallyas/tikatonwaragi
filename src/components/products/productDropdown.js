@@ -6,10 +6,9 @@ const ProductDropdown = () => {
   const [PRODUCTS, setproductData] = useState([]);
   const [selectedProduct, setSelectedProduct]= useState("");
   useEffect(() => {
-
     const productEndPoint = "http://localhost:8000/tkproduct/products";
-  
-    fetch(productEndPoint)
+    return () => {
+      fetch(productEndPoint)
       .then((res) => res.json())
 
       .then((productList) => {
@@ -17,7 +16,13 @@ const ProductDropdown = () => {
 
         console.log(productList);
       });
-  }, []);
+    };
+  }, [])
+
+    
+  
+
+
 
   const products = PRODUCTS.map((item) => {
     <option 

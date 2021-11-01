@@ -25,16 +25,27 @@ function AddSales() {
 
     // setUserDetails({...userDetails})
 
-    const materialEndPoint = "http://localhost:8000/tkSales/sales";
-
-    fetch(materialEndPoint, {
+    const salesEndPoint = "http://localhost:8000/tkSales/sales";
+    const customerEndpoint="http://localhost:8000/tkCustomers/customers"
+// Post  form to two end points 
+    Promise.all([
+    fetch(salesEndPoint, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        // 'Content-Type':'application/x-www-form-urlencoded'
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(),
-    })
+    }),
+    fetch(customerEndpoint, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(),
+    }),
+  ])
       .then((res) => {
         return res.json();
       })
@@ -43,7 +54,7 @@ function AddSales() {
         console.log(data);
       });
 
-    history.push("/admin/addSales");
+    history.push("/admin/sales");
   };
 
   return (
