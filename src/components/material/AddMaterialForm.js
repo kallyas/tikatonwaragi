@@ -25,6 +25,15 @@ const AddMaterialForm = () => {
     setAmount(amount)
   }
 
+  const materialForm={
+    invoiceNumber: invoiceNumber,
+    supplier_id:supplier,
+    category: category,
+    item: item,
+    quantity:quantity,
+    unitPrice:unitPrice ,
+    amount: amount
+  }
 
   let history = useHistory();
 
@@ -69,15 +78,7 @@ const [materials, setMaterial]=useState([])
       setMaterial(newMaterial);
     };
   
-    const materialForm={
-      invoiceNumber: invoiceNumber,
-      supplier_id:supplier,
-      category: category,
-      item: item,
-      quantity:quantity,
-      unitPrice:unitPrice ,
-      amount: amount
-    }
+
 
   return (
     <div>

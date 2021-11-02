@@ -41,15 +41,18 @@ app.use(bodyParser.urlencoded({
 
 // cors middle ware to allow cross site
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "http://localhost:8000");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
-    "Access-Control-Allow-Origin", '*'
+  
+
   );
   res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT');
   next();
 });
+app.use(cors())
+app.options('*', cors())
 app.use(expressSession);
 app.use(cookieParser());
 

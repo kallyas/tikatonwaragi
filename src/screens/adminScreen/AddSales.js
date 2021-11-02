@@ -19,6 +19,21 @@ function AddSales() {
 
   let history = useHistory();
 
+  // adding sales object
+  const salesForm={
+    product_name: productName,
+    category: category,
+    quantity:quantity,
+    unit_price:unitPrice ,
+    amount: amount,
+    payment_mode:paymentMode
+  }
+  // customer object
+  const customerForm={
+    customer_name:customerName,
+    customer_location:customer_location
+  }
+
   // const [Details, setUserDetails] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,29 +46,36 @@ function AddSales() {
     Promise.all([
     fetch(salesEndPoint, {
       method: "post",
+      mode: 'cors',
+    
       headers: {
+        'Accept': 'application/json',
         "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:8000',
+        "Allow": "POST",
+
       },
-      body: JSON.stringify(),
+      body: JSON.stringify(salesForm),
     }),
     fetch(customerEndpoint, {
       method: "post",
+      mode: 'cors',
+    
       headers: {
+        'Accept': 'application/json',
         "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:8000',
+        "Allow": "POST",
       },
-      body: JSON.stringify(),
+      body: JSON.stringify(customerForm),
     }),
   ])
       .then((res) => {
         return res.json();
       })
-
       .then((data) => {
         console.log(data);
       });
-
     history.push("/admin/sales");
   };
 
@@ -135,7 +157,7 @@ function AddSales() {
                   </Form.Group>
                 </Row>
 
-                <hr />
+                <hr /> 
 
                 <Row className="mb-3">
                   <Form.Group as={Col}>
