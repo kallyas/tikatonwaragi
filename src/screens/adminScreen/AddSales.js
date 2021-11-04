@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import Sidebar2 from "../../components/sidebar";
 import ProductDropdown from "../../components/products/productDropdown";
 function AddSales() {
-
   // Handle Adding an item on the form
 
   const [customerName, setcustomerName] = useState("");
@@ -20,19 +19,19 @@ function AddSales() {
   let history = useHistory();
 
   // adding sales object
-  const salesForm={
+  const salesForm = {
     product_name: productName,
     category: category,
-    quantity:quantity,
-    unit_price:unitPrice ,
+    quantity: quantity,
+    unit_price: unitPrice,
     amount: amount,
-    payment_mode:paymentMode
-  }
+    payment_mode: paymentMode,
+  };
   // customer object
-  const customerForm={
-    customer_name:customerName,
-    customer_location:customer_location
-  }
+  const customerForm = {
+    customer_name: customerName,
+    customer_location: customer_location,
+  };
 
   // const [Details, setUserDetails] = useState("");
   const handleSubmit = (event) => {
@@ -41,39 +40,41 @@ function AddSales() {
     // setUserDetails({...userDetails})
 
     const salesEndPoint = "http://localhost:8000/tkSales/sales";
-    const customerEndpoint="http://localhost:8000/tkCustomers/customers"
-// Post  form to two end points 
+    const customerEndpoint = "http://localhost:8000/tkCustomer/customers";
+    // Post  form to two end points
     Promise.all([
-    fetch(salesEndPoint, {
-      method: "post",
-      mode: 'cors',
-    
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': 'http://localhost:8000',
-        "Allow": "POST",
+      fetch(salesEndPoint, {
+        method: "post",
+        mode: "cors",
 
-      },
-      body: JSON.stringify(salesForm),
-    }),
-    fetch(customerEndpoint, {
-      method: "post",
-      mode: 'cors',
-    
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': 'http://localhost:8000',
-        "Allow": "POST",
-      },
-      body: JSON.stringify(customerForm),
-    }),
-  ])
-      .then((res) => {
-        return res.json();
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:8000",
+          Allow: "POST",
+        },
+        body: JSON.stringify(salesForm),
+      }),
+      fetch(customerEndpoint, {
+        method: "post",
+        mode: "cors",
+
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:8000",
+          Allow: "POST",
+        },
+        body: JSON.stringify(customerForm),
+      }),
+    ])
+      .then(([customerForm,salesForm]) => {
+        const customer=customerForm.json
+        const sale= salesForm.json
+        return [customer,sale]
       })
       .then((data) => {
+        
         console.log(data);
       });
     history.push("/admin/sales");
@@ -129,8 +130,9 @@ function AddSales() {
                     />
                   </Form.Group>
                   <Form.Group as={Col}>
-                  
-                    <ProductDropdown/>
+                   
+                      <ProductDropdown />
+                   
                   </Form.Group>
                 </Row>
 
@@ -157,7 +159,7 @@ function AddSales() {
                   </Form.Group>
                 </Row>
 
-                <hr /> 
+                <hr />
 
                 <Row className="mb-3">
                   <Form.Group as={Col}>
@@ -172,6 +174,7 @@ function AddSales() {
 
                   <Form.Group as={Col}>
                     <Form.Control
+                    size="sm"
                       placeholder="Payment Mode"
                       name="payment_mode"
                       value={paymentMode}

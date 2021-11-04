@@ -17,7 +17,7 @@ const Sale = function (sale) {
 // Create model for sales
 Sale.create = (newsale, result) => {
   const generatesaleID = () => {
-    return "P" + moment(new Date()).format("YYYYMMDDHHmmssSS");
+    return "S" + moment(new Date()).format("YYYYMMDDHHmmssSS");
   };
   const generateCustomerID = () => {
     return "C" + moment(new Date()).format("YYYYMMDDHHmmssSS");
@@ -32,18 +32,18 @@ Sale.create = (newsale, result) => {
 
   // Inserting into tables sales and customer tables
   const insertsale =
-    "INSERT INTO tika_sales (id, product_name,category,quantity,unit_price,amount,sale_date)  VALUES(?, ?,?, ?, ?, ?, ?,?)";
+    "INSERT INTO tika_sales (id, product_name,category,quantity,unit_price,amount,payment_mode,sale_date)  VALUES(?, ?,?, ?, ?, ?, ?,?)";
 
   const values = [
     newsale.id,
-    
-    newsale.product_name,
     newsale.category,
+    newsale.product_name,
     newsale.quantity,
     newsale.unit_price,
     newsale.amount,
-    newsale.sale_date,
     newsale.payment_mode,
+    newsale.sale_date,
+    
   ]
  
   // const insertCustomer = "INSERT INTO customers (id, customer_name, location)  VALUES(?, ?,?)";

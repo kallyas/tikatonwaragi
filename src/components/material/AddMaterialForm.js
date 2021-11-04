@@ -40,7 +40,6 @@ const AddMaterialForm = () => {
   // const [Details, setUserDetails] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault()
-  
     // setUserDetails({...userDetails})
     console.log(materialForm);
     const materialEndPoint='http://localhost:8000/tkMaterial/materials'
