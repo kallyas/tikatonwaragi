@@ -41,7 +41,7 @@ create table if not exists tika_transaction(
 create table if not exists tika_sales(
     id varchar (40)primary key,
     product_name varchar(255),
-    category varchar(20)not null,
+    category varchar(60)not null,
     quantity varchar(20)not null,
     unit_price int (10),
     amount int (10),
@@ -50,9 +50,8 @@ create table if not exists tika_sales(
 );
 
 create table if not exists customers(
-    customer_id varchar (40)primary key,
+    id varchar (40)primary key,
     customer_name varchar(255)not null,
-    customer_location varchar(20),
-    contact varchar(20)
-      
+    customer_location varchar(20)
+          
 );

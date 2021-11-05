@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 
-import SignUpForm from '../components/Form';
+// import SignUpForm from '../components/Form';
 
 function SignUp() {
     

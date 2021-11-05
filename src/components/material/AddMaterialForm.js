@@ -20,18 +20,26 @@ const AddMaterialForm = () => {
   const [discount, setDiscount] = useState("");
   const [paidAmount, setPaidAmount] = useState("");
 
-  function getAmount() {
+  function getAmount(amount) {
     amount=unitPrice*quantity
-    setAmount(amount)
+    setTotalAmount(amount)
   }
 
+  const materialForm={
+    invoiceNumber: invoiceNumber,
+    supplier_id:supplier,
+    category: category,
+    item: item,
+    quantity:quantity,
+    unitPrice:unitPrice ,
+    amount: amount
+  }
 
   let history = useHistory();
 
   // const [Details, setUserDetails] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault()
-  
     // setUserDetails({...userDetails})
     console.log(materialForm);
     const materialEndPoint='http://localhost:8000/tkMaterial/materials'
@@ -69,15 +77,7 @@ const [materials, setMaterial]=useState([])
       setMaterial(newMaterial);
     };
   
-    const materialForm={
-      invoiceNumber: invoiceNumber,
-      supplier_id:supplier,
-      category: category,
-      item: item,
-      quantity:quantity,
-      unitPrice:unitPrice ,
-      amount: amount
-    }
+
 
   return (
     <div>

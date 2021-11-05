@@ -2,8 +2,8 @@ import React from "react";
 
 import Sidebar2 from "../../components/sidebar";
 
-import AddMaterialForm from "../../components/material/AddMaterialForm";
-import Dashboard from "../../components/dashboard/Dashboard";
+// import AddMaterialForm from "../../components/material/AddMaterialForm";
+// import Dashboard from "../../components/dashboard/Dashboard";
 
 function Adminstrator() {
   return (

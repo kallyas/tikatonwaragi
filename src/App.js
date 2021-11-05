@@ -18,9 +18,8 @@ import React from "react";
     // import components
     
     import Dashboard from '../src/components/dashboard/Dashboard';
-    import Dashboard1 from '../src/components/dashboard/Dashboard';
+    // import Dashboard1 from '../src/components/dashboard/Dashboard';
     
-
     function App() {
       return (
         <Router>
@@ -36,7 +35,7 @@ import React from "react";
             <Route path="/material" component={Material}/>
             <Route path="/admin" component={Admin} exact/>
             
-            <Route path="/admin/dash1" component={Dashboard}/>
+            {/* <Route path="/admin/dash1" component={Dashboard}/> */}
             <Route path="/admin/addMaterial" component={AddMaterial}/>
             <Route path="/admin/materialList" component={ListMaterial}/>
             <Route path="/admin/addProducts" component={AddProduct}/>

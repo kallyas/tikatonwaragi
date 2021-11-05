@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { Card, Form, Col, Row, Button, Table } from "react-bootstrap";
-import MaterialTable from "../../components/material/MaterialTable";
+import { Card, Form, Col, Row, Button } from "react-bootstrap";
+
 import { useHistory } from "react-router-dom";
 import Sidebar2 from "../../components/sidebar";
 import ProductDropdown from "../../components/products/productDropdown";
 function AddSales() {
-
   // Handle Adding an item on the form
 
   const [customerName, setcustomerName] = useState("");
   const [customer_location, setLocation] = useState("");
   const [category, setCategory] = useState("");
-  const [productName, setproductName] = useState("");
+  const [productName, setProductName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [unitPrice, setUnitPrice] = useState("");
   const [amount, setAmount] = useState("");
@@ -19,31 +18,66 @@ function AddSales() {
 
   let history = useHistory();
 
+  // adding sales object
+  const salesForm = {
+    product_name: productName,
+    category: category,
+    quantity: quantity,
+    unit_price: unitPrice,
+    amount: amount,
+    payment_mode: paymentMode,
+  };
+  // customer object
+  const customerForm = {
+    customer_name: customerName,
+    customer_location: customer_location,
+  };
+
   // const [Details, setUserDetails] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
 
     // setUserDetails({...userDetails})
 
-    const materialEndPoint = "http://localhost:8000/tkSales/sales";
+    const salesEndPoint = "http://localhost:8000/tkSales/sales";
+    const customerEndpoint = "http://localhost:8000/tkCustomer/customers";
+    // Post  form to two end points
+    Promise.all([
+      fetch(salesEndPoint, {
+        method: "post",
+        mode: "cors",
 
-    fetch(materialEndPoint, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type':'application/x-www-form-urlencoded'
-      },
-      body: JSON.stringify(),
-    })
-      .then((res) => {
-        return res.json();
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:8000",
+          Allow: "POST",
+        },
+        body: JSON.stringify(salesForm),
+      }),
+      fetch(customerEndpoint, {
+        method: "post",
+        mode: "cors",
+
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:8000",
+          Allow: "POST",
+        },
+        body: JSON.stringify(customerForm),
+      }),
+    ])
+      .then(([customerForm,salesForm]) => {
+        const customer=customerForm.json
+        const sale= salesForm.json
+        return [customer,sale]
       })
-
       .then((data) => {
+        
         console.log(data);
       });
-
-    history.push("/admin/addSales");
+    history.push("/admin/sales");
   };
 
   return (
@@ -51,7 +85,7 @@ function AddSales() {
       <div className="">
         <Sidebar2 />
       </div>
-      <div className="">
+      <div className="form">
         {/* <Dashboard1/> */}
         <div>
           <Card className="addCard">
@@ -96,8 +130,9 @@ function AddSales() {
                     />
                   </Form.Group>
                   <Form.Group as={Col}>
-                  
-                    <ProductDropdown/>
+                   
+                      <ProductDropdown />
+                   
                   </Form.Group>
                 </Row>
 
@@ -139,6 +174,7 @@ function AddSales() {
 
                   <Form.Group as={Col}>
                     <Form.Control
+                    size="sm"
                       placeholder="Payment Mode"
                       name="payment_mode"
                       value={paymentMode}

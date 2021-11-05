@@ -1,16 +1,35 @@
 const sql = require("./db.js");
+const { errorMessage, status, successMessage } = require("../helpers/status");
+const Helper = require("../helpers/validations.js");
+const moment = require("moment");
 
 
 // constructor
 const Customer = function(customer) {
-  this.username = customer.username;
-  this.name = customer.name;
-  this.active = customer.active;
+  
+  this.customer_name = customer.customer_name;
+  this.customer_location = customer.customer_location ;
+
 };
 
+
+
 Customer.create = (newCustomer, result) => {
-  
-  sql.query("INSERT INTO customers SET ?", newCustomer, (err, res) => {
+  const generateCustomerID = () => {
+    return "C" + moment(new Date()).format("YYYYMMDDHHmmssSS");
+  };
+
+  newCustomer.id=generateCustomerID()
+  console.log(newCustomer.id);
+
+  const insertCustomer =
+    "INSERT INTO customers (id, customer_name, customer_location)  VALUES(?, ?,?)";
+  const customerValues=[
+    newCustomer.id,
+    newCustomer.customer_name,
+    newCustomer.customer_location,
+  ];
+  sql.query(insertCustomer, customerValues, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -23,7 +42,7 @@ Customer.create = (newCustomer, result) => {
 };
 
 Customer.findById = (customerId, result) => {
-  sql.query(`SELECT * FROM customers WHERE id = ${customerId}`, (err, res) => {
+  sql.query(`SELECT * FROM customers WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -56,8 +75,8 @@ Customer.getAll = result => {
 
 Customer.updateById = (id, customer, result) => {
   sql.query(
-    "UPDATE customers SET email = ?, name = ?, active = ? WHERE id = ?",
-    [customer.email, customer.name, customer.active, id],
+    "UPDATE customers SET customer_name = ?,  customer_location  = ? WHERE id = ?",
+    [customer.customer_name, customer.customer_location , id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
