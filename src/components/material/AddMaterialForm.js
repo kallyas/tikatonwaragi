@@ -20,9 +20,9 @@ const AddMaterialForm = () => {
   const [discount, setDiscount] = useState("");
   const [paidAmount, setPaidAmount] = useState("");
 
-  function getAmount() {
+  function getAmount(amount) {
     amount=unitPrice*quantity
-    setAmount(amount)
+    setTotalAmount(amount)
   }
 
   const materialForm={

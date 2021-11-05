@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 const ProductDropdown = () => {
   //                                                                                                                                              const [productOption, setProductOption] = useState("");
   const [PRODUCTS, setproductData] = useState([]);
-  const [productName, setproductName] = useState("");
+  const [productName, setproductName] = useState("product");
 useEffect(() => {
 
     const productEndPoint = "http://localhost:8000/tkproduct/products";
@@ -18,20 +18,20 @@ useEffect(() => {
     };
   }, [])
 //Destructure the object returned from database
-  const products = PRODUCTS.map((item) => {
-    // <option 
-    // key={item.id}
-    // value={item.product_name}
-    // >{item.product_name}</option>;
-    // console.log(item.product_name)
+  // const products = PRODUCTS.map((item) => {
+  //   // <option 
+  //   // key={item.id}
+  //   // value={item.product_name}
+  //   // >{item.product_name}</option>;
+  //   // console.log(item.product_name)
     
-          item.PRODUCT.map((product_name) => (
-            <option key={product_name} value={product_name}>
-              {product_name}
-            </option>
-          ))
+  //         item.PRODUCT.map((product_name) => {
+  //           <option key={product_name} value={product_name}>
+  //             {product_name}
+  //           </option>
+  //         })
         
-  });
+  // });
   return (
     
     <Form.Select
@@ -44,7 +44,9 @@ useEffect(() => {
     }
   >
     <option value="">Select Products</option>
-                 {products}
+                 {PRODUCTS.map((item ) => (
+                    <option key={item.id}>{item.product_name}</option>
+                  ))}
                  </Form.Select>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card, Form, Col, Row, Button, Table } from "react-bootstrap";
-import MaterialTable from "../../components/material/MaterialTable";
+import { Card, Form, Col, Row, Button } from "react-bootstrap";
+
 import { useHistory } from "react-router-dom";
 import Sidebar2 from "../../components/sidebar";
 import ProductDropdown from "../../components/products/productDropdown";
@@ -10,7 +10,7 @@ function AddSales() {
   const [customerName, setcustomerName] = useState("");
   const [customer_location, setLocation] = useState("");
   const [category, setCategory] = useState("");
-  const [productName, setproductName] = useState("");
+  const [productName, setProductName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [unitPrice, setUnitPrice] = useState("");
   const [amount, setAmount] = useState("");
