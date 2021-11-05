@@ -85,7 +85,7 @@ function AddSales() {
       <div className="">
         <Sidebar2 />
       </div>
-      <div className="">
+      <div className="form">
         {/* <Dashboard1/> */}
         <div>
           <Card className="addCard">

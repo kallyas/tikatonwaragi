@@ -43,7 +43,6 @@ useEffect(() => {
       setproductName(event.target.value)
     }
   >
-    <option value="">Select Products</option>
                  {PRODUCTS.map((item ) => (
                     <option key={item.id}>{item.product_name}</option>
                   ))}
