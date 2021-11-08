@@ -54,7 +54,7 @@ const productList = () => {
               }}
             >
               <Breadcrumb.Item>products</Breadcrumb.Item>
-              <Breadcrumb.Item active>products List</Breadcrumb.Item>
+              <Breadcrumb.Item active>Products List</Breadcrumb.Item>
             </Breadcrumb>
           </div>
 

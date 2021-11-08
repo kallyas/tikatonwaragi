@@ -19,31 +19,31 @@ import {
     faSearch,
     faSlidersH,
   } from "@fortawesome/free-solid-svg-icons";
+  import Sidebar2 from "../../components/sidebar";
 
 const SaleList = () => {
-  // const material={
-  //   invoiceNumber: invoiceNumber,
-  //   supplier_id:supplier,
-  //   category: category,
-  //   item: item,
-  //   quantity:quantity,
-  //   unitPrice:unitPrice ,
-  //   amount: amount
-  // }
+ 
 
-  const [materialData, setMaterialData] = useState([])
+  const [salesData, setsalesData] = useState([])
 
   useEffect(() => {
-    const MaterialEndPoint = 'http://localhost:8000/tkMaterial/materials';
-    fetch(MaterialEndPoint).then(res=>res.json()) 
+    const salesEndPoint = 'http://localhost:8000/tkSales/sales';
+    fetch(salesEndPoint).then(res=>res.json()) 
 
-    .then((material)  => {
-                    setMaterialData( material)
-                   console.log(material); 
+    .then((sales)  => {
+                    setsalesData( sales)
+                   console.log(sales); 
                 }) 
     }, [])
   return (
 
+    <div className="dashboard">
+      
+    <div   className="">
+        
+    <Sidebar2/>
+    </div >
+    <div className="data-display">
       <Row>
         <Col className="mb-4">
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -55,8 +55,8 @@ const SaleList = () => {
                 }}
               >
                 
-                <Breadcrumb.Item>Materials</Breadcrumb.Item>
-                <Breadcrumb.Item active>Materials List</Breadcrumb.Item>
+                <Breadcrumb.Item>Sales</Breadcrumb.Item>
+                <Breadcrumb.Item active>Sales List</Breadcrumb.Item>
               </Breadcrumb>
                             
             </div>
@@ -122,29 +122,33 @@ const SaleList = () => {
               <Table hover className="user-table align-items-center">
                 <thead>
                   <tr>
-                  <th className="border-bottom">Category</th>
-                    <th className="border-bottom">Item</th>
+                  <th className="border-bottom">Product</th>
+                    <th className="border-bottom">Category</th>
                     <th className="border-bottom">Quantity</th>
                     <th className="border-bottom">Unit Price</th>
                     <th className="border-bottom">Amount</th>
-                    <th className="border-bottom">Supplier</th>
+                    <th className="border-bottom">Customer</th>
+                    <th className="border-bottom">Location</th>
+                    <th className="border-bottom">Pay</th>
                   </tr>
                 </thead>
                 <tbody>                   
                         {/* map over the users array */}
         
-                        {materialData.map((material) => (
+                        {salesData.map((sales) => (
           // display a <div> element with the user.name and user.type
           // parent element needs to have a unique key
-          <tr key={material.invoiceNumber}>
-            <td>{material.category}</td>
-            <td>{material.item}</td>
+          <tr key={sales.id}>
+            <td>{sales.product_name}</td>
+            <td>{sales.category}</td>
             
                     
-                    <td>{material.quantity}</td>
-                    <td>{material.unitPrice}</td>
-                    <td>{material.amount}</td>
-                    <td>{material.supplier_id}</td>
+                    <td>{sales.quantity}</td>
+                    <td>{sales.unit_price}</td>
+                    <td>{sales.amount}</td>
+                    <td>{sales.customer_name}</td>
+                    <td>{sales.customer_location}</td>
+                    <td>{sales.payment_mode}</td>
           </tr>
         ))}
                         
@@ -158,7 +162,8 @@ const SaleList = () => {
         </Col>
         
         </Row>
-      
+      </div>
+      </div>
     
   )
 }
