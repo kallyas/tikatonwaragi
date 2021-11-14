@@ -16,6 +16,7 @@ import React from "react";
     import ListProduct from "../src/screens/adminScreen/ListProduct";
     import AddSales from "../src/screens/adminScreen/AddSales";
     import Sales from "./screens/adminScreen/saleList";
+    import Opareta from "./screens/opera"
     // import components
     
     import Dashboard from '../src/components/dashboard/Dashboard';
@@ -28,6 +29,7 @@ import React from "react";
           <Switch>
           <Route>
             <Route path="/" exact component={Home} />
+            <Route path="/opera" exact component={Opareta} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/signin" component={SignIn} />

@@ -127,8 +127,6 @@ const SaleList = () => {
                     <th className="border-bottom">Quantity</th>
                     <th className="border-bottom">Unit Price</th>
                     <th className="border-bottom">Amount</th>
-                    <th className="border-bottom">Customer</th>
-                    <th className="border-bottom">Location</th>
                     <th className="border-bottom">Pay</th>
                   </tr>
                 </thead>

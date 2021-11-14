@@ -2,7 +2,7 @@ import React from "react";
 
 import Sidebar2 from "../../components/sidebar";
 
-// import AddMaterialForm from "../../components/material/AddMaterialForm";
+import Chart from "../../components/dashboard/Dashchart";
 // import Dashboard from "../../components/dashboard/Dashboard";
 
 function Adminstrator() {
@@ -14,7 +14,7 @@ function Adminstrator() {
         <Sidebar2/>
         </div >
         <div className="">
-        {/* <Dashboard/> */}
+        <Chart/>
         
           </div >
       
