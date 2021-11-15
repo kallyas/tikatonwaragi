@@ -30,7 +30,7 @@ text-align: left;
 /* Home Page CSS */
 .home-page{
   background-color: #13C4A3;
-  width: 98vw;
+  width: 100%;
   height: 120vh;
   align-self: center;
   margin: auto 0;
@@ -103,8 +103,8 @@ text-align: left;
 
 /* Dashboard and admin CSS */
 .dashboard{
-  width: 100vw;
-  height: 120vh;
+  width: 100%;
+  height: 100%;
   /* padding:10px; */
   background-color: #13C4A3;
   display: flex;
@@ -114,7 +114,7 @@ text-align: left;
 .dashboard .side-menu{
   /* position: absolute; */
   background-color: #DBCDCD;
-  width: 250px;
+  width: 100%;
   height: 100%;
   box-sizing: border-box;
   margin:  auto 0;
