@@ -19,6 +19,7 @@ import {
   faSlidersH,
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar2 from "../../components/sidebar";
+import Footer from "../../components/dashboard/Footer";
 
 const ProductList = () => {
     const [productData, setproductData] = useState([]);
@@ -151,7 +152,7 @@ const ProductList = () => {
       </Col>
     </Row>
         </div >
-      
+      <Footer/>
     </div>
   )
 }

@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { Navbar, Nav, NavItem } from 'reactstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
-import SourceLink from 'components/SourceLink';
+// import SourceLink from 'components/SourceLink';
 
 const Footer = () => {
   return (
     <Navbar>
       <Nav navbar>
         <NavItem>
-          2018 Reduction theme, source on <SourceLink>Github</SourceLink>
+          MicroFood 
         </NavItem>
       </Nav>
     </Navbar>
