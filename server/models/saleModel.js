@@ -8,7 +8,6 @@ const Sale = function (sale) {
   this.product_name = sale.product_name;
   this.category = sale.category;
   this.quantity = sale.quantity;
-
   this.unit_price = sale.unit_price;
   this.amount = sale.amount;
   this.sale_date = sale.sale_date;
@@ -79,7 +78,7 @@ Sale.findById = (id, result) => {
 };
 
 Sale.getAll = (result) => {
-  sql.query("SELECT * FROM tika_sales,customers", (err, res) => {
+  sql.query("SELECT * FROM tika_sales", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

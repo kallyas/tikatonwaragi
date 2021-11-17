@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar2 from "../../components/sidebar";
 import List from "../../components/material/MaterialList";
+import Footer from '../../components/dashboard/Footer';
 const MaterialList = () => {
   return (
     <div className="dashboard">
@@ -13,7 +14,7 @@ const MaterialList = () => {
         {/* <Dashboard1/> */}
         <List/>
         </div >
-      
+      <Footer/>
     </div>
   )
 }

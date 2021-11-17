@@ -3,6 +3,7 @@ import React from "react";
 import Sidebar2 from "../../components/sidebar";
 
 import AddMaterialForm from "../../components/products/addProducts";
+import Footer from "../../components/dashboard/Footer";
 
 function AddProduct() {
   return (
@@ -15,8 +16,9 @@ function AddProduct() {
         <div className="form">
         {/* <Dashboard1/> */}
         <AddMaterialForm />
+        
           </div >
-      
+          
     </div>
   );
 }
