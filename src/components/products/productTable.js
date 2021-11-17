@@ -18,17 +18,11 @@ import {
   faSearch,
   faSlidersH,
 } from "@fortawesome/free-solid-svg-icons";
+import FormDialog from "../Modal";
 
 const productList = () => {
-  // const product={
-  //   invoiceNumber: invoiceNumber,
-  //   supplier_id:supplier,
-  //   category: category,
-  //   item: item,
-  //   quantity:quantity,
-  //   unitPrice:unitPrice ,
-  //   amount: amount
-  // }
+ 
+ 
 
   const [productData, setproductData] = useState([]);
 
@@ -59,9 +53,10 @@ const productList = () => {
           </div>
 
           <div className="btn-toolbar mb-2 mb-md-2 mr-2">
-            <Button variant="primary" size="sm">
-              <FontAwesomeIcon icon={faPlus} className="me-2" /> Add New
+            <Button variant="primary" size="sm" onClick={handleClickOpen}>
+              <FontAwesomeIcon icon={faPlus} className="me-2" /> Add Product
             </Button>
+            <FormDialog open={open}/>
           </div>
         </div>
         <div className="table-settings mb-4">

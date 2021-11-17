@@ -60,10 +60,8 @@ history.push("/admin/addproduct");
 
   return (
     <div>
-      <Card className="addCard">
-        <Card.Title>Add Products Form</Card.Title>
-        <Card.Body>
-          <Form onSubmit={handleSubmit} method="POST" action="/admin/addproduct">
+      
+          <Form onSubmit={handleSubmit} method="POST" action="/admin/ProductList">
             <Row className="mb-3">
               <Form.Group as={Col}>
                 <Form.Control
@@ -140,8 +138,7 @@ history.push("/admin/addproduct");
               Submit
             </Button>
           </Form>
-        </Card.Body>
-      </Card>
+     
     </div>
   );
 };
