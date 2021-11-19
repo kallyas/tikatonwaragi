@@ -26,19 +26,7 @@ const Sidebar2 = () => {
                     <div id="icon">{val.icon}</div>
                     <div id="title">{val.title}</div>
                     
-                    {/* ,{subNav.map(()=>{return(
-                        <li key={key}
-                        onClick={()=>{
-                          window.location.pathname=val.itemId}}
-                        >
-                          <div className="sidebar-item-text">
-                            {val.title}
-                          </div>
-                        </li>
-                    )
-                  
-                  })
-                  } */}
+                 
                 </li>
               )
           })

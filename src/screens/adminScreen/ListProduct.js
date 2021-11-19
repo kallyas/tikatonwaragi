@@ -18,10 +18,11 @@ import {
   faSearch,
   faSlidersH,
 } from "@fortawesome/free-solid-svg-icons";
+import Icon from '@mui/material/Icon'
 
 import Sidebar2 from "../../components/sidebar";
 import Footer from "../../components/dashboard/Footer";
-import FormDialog from "../../components/Modal";
+import FormDialog from "../../components/modal/productModal";
 
 const ProductList = (props) => {
 
@@ -63,9 +64,7 @@ const ProductList = (props) => {
           </div>
 
           <div className="btn-toolbar mb-2 mb-md-2 mr-2">
-            <Button variant="primary" size="sm" className="loginbtn" >
-              <FontAwesomeIcon icon={faPlus} className="me-2" /> Add New
-            </Button>
+           
             <FormDialog title="ProductForm}"/>
           </div>
         </div>
