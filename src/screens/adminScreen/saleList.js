@@ -20,6 +20,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar2 from "../../components/sidebar";
 import Footer from "../../components/dashboard/Footer";
+import SalesDialog from "../../components/modal/salesModal";
 
 const SaleList = () => {
   const [salesData, setsalesData] = useState([]);
@@ -36,7 +37,7 @@ const SaleList = () => {
   }, []);
   return (
     <div className="dashboard">
-      <div className="">
+      <div className="side-bar">
         <Sidebar2 />
       </div>
       <div className="data-display">
@@ -56,9 +57,11 @@ const SaleList = () => {
               </div>
 
               <div className="btn-toolbar mb-2 mb-md-2 mr-2">
-                <Button variant="primary" size="sm" className="loginbtn">
+                {/* <Button variant="primary" size="sm" className="loginbtn">
                   <FontAwesomeIcon icon={faPlus} className="me-2" /> Add New
-                </Button>
+                </Button> */}
+
+                <SalesDialog/>
               </div>
             </div>
             <div className="table-settings mb-4">

@@ -43,7 +43,7 @@ const ProductList = (props) => {
   return (
     <div className="dashboard">
       
-        <div   className="">
+        <div   className="side-bar">
             
         <Sidebar2/>
         </div >

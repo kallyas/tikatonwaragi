@@ -14,7 +14,7 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons"
 import AddSaleForm from "../../screens/adminScreen/AddSales";
 
 
-export default function FormDialog() {
+export default function SalesDialog() {
   const [open, setOpen] = useState(false);
  // handle Form Dialog
  const handleClickOpen = () => {
