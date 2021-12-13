@@ -8,9 +8,10 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons"
-import AddProductForm from "./products/addProducts";
+import AddProductForm from "../products/addProducts";
 
 
 export default function FormDialog() {
@@ -25,8 +26,8 @@ export default function FormDialog() {
 
   return (
     <div >
-      <Button variant="outlined" onClick={handleClickOpen}className="loginbtn">
-        Add New <FontAwesomeIcon icon={faPlus} className="me-2" /> 
+      <Button variant="contained" onClick={handleClickOpen} className="loginbtn">
+        Add Product
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Form</DialogTitle>

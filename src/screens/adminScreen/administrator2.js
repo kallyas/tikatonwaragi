@@ -2,23 +2,23 @@ import React from "react";
 
 import Sidebar2 from "../../components/sidebar";
 
-import Chart from "../../components/dashboard/Dashchart";
-import Footer from "../../components/dashboard/Footer";
-// import Dashboard from "../../components/dashboard/Dashboard";
+import Chart from "./Dashchart";
+
+import Header from "../../components/dashboard/DashHeader";
 
 function Adminstrator() {
   return (
     <div className="dashboard">
       
-        <div   className="">
+        <div   className="side-bar">
             
         <Sidebar2/>
         </div >
-        <div className="">
-        <Chart/>
+        <div className="data-display">
+          <Header/>
+          <Chart/>
         
           </div >
-      <Footer/>
     </div>
   );
 }

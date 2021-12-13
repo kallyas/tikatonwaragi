@@ -10,12 +10,12 @@ import React from "react";
     import SignIn from '../src/screens/signin';
     import Material from '../src/screens/Material'
     import Admin from "../src/screens/adminScreen/administrator2"
-    import AddMaterial from "../src/screens/adminScreen/AddMaterial";
-    import ListMaterial from "../src/screens/adminScreen/ListMaterial";
-    import AddProduct from "../src/screens/adminScreen/AddProduct";
-    import ListProduct from "../src/screens/adminScreen/ListProduct";
-    import AddSales from "../src/screens/adminScreen/AddSales";
-    import Sales from "./screens/adminScreen/saleList";
+    import AddMaterial from "../src/components/material/AddMaterial";
+    import ListMaterial from "../src/components/material/ListMaterial";
+    import AddProduct from "../src/components/products/addProducts";
+    import ListProduct from "../src/components/products/ListProduct";
+    import AddSales from "../src/components/sales/AddSales";
+    import Sales from "../src/components/sales/saleList";
     import Opareta from "./screens/opera"
     // import components
     

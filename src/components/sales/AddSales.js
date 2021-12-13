@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Card, Form, Col, Row, Button } from "react-bootstrap";
-
+import { Card, Form, Col, Row } from "react-bootstrap";
+import{Button }  from "@mui/material";
 import { useHistory } from "react-router-dom";
-import Sidebar2 from "../../components/sidebar";
-import ProductDropdown from "../../components/products/productDropdown";
+import Sidebar2 from "../sidebar";
+import ProductDropdown from "../products/productDropdown";
 function AddSales() {
   // Handle Adding an item on the form
 
@@ -81,22 +81,17 @@ function AddSales() {
   };
 
   return (
-    <div className="dashboard">
-      <div className="">
-        <Sidebar2 />
-      </div>
-      <div className="form">
-        {/* <Dashboard1/> */}
-        <div>
-          <Card className="addCard">
-            <Card.Title>Sales Form</Card.Title>
-            <Card.Body>
+    
+           
+          
               <Form
                 onSubmit={handleSubmit}
                 method="POST"
                 action="/admin/addSales"
+                className="form"
               >
                 <Row className="mb-3">
+
                   <Form.Group as={Col}>
                     <Form.Control
                       size="sm"
@@ -183,16 +178,13 @@ function AddSales() {
                   </Form.Group>
                 </Row>
 
-                <Button variant="primary" type="submit">
+                <Button variant="contained" type="submit">
                   Submit
                 </Button>
               </Form>
-            </Card.Body>
-          </Card>
-        </div>
+          
         
-      </div>
-    </div>
+    
   );
 }
 

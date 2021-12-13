@@ -1,15 +1,14 @@
 import React from "react";
 
-import Sidebar2 from "../../components/sidebar";
+import Sidebar2 from "../sidebar";
 
-import AddMaterialForm from "../../components/products/addProducts";
-import Footer from "../../components/dashboard/Footer";
+import AddMaterialForm from "./addProducts";
 
 function AddProduct() {
   return (
     <div className="dashboard">
       
-        <div   className="">
+        <div   className="side-bar">
             
         <Sidebar2/>
         </div >
