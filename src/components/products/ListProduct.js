@@ -20,9 +20,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Icon from '@mui/material/Icon'
 
-import Sidebar2 from "../../components/sidebar";
-import Footer from "../../components/dashboard/Footer";
-import FormDialog from "../../components/modal/productModal";
+import Sidebar2 from "../sidebar";
+
+import FormDialog from "../modal/productModal";
 
 const ProductList = (props) => {
 
@@ -157,7 +157,6 @@ const ProductList = (props) => {
       </Col>
     </Row>
         </div >
-      <Footer/>
     </div>
   )
 }

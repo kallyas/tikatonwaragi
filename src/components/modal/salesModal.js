@@ -11,7 +11,7 @@ import {
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons"
-import AddSaleForm from "../../screens/adminScreen/AddSales";
+import AddSaleForm from "../sales/AddSales";
 
 
 export default function SalesDialog() {

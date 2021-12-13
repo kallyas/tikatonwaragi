@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Card, Form, Col, Row } from "react-bootstrap";
 import{Button }  from "@mui/material";
 import { useHistory } from "react-router-dom";
-import Sidebar2 from "../../components/sidebar";
-import ProductDropdown from "../../components/products/productDropdown";
+import Sidebar2 from "../sidebar";
+import ProductDropdown from "../products/productDropdown";
 function AddSales() {
   // Handle Adding an item on the form
 

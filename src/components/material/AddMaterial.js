@@ -1,9 +1,8 @@
 import React from "react";
 
-import Sidebar2 from "../../components/sidebar";
+import Sidebar2 from "../sidebar";
 
-import AddMaterialForm from "../../components/material/AddMaterialForm";
-import Footer from "../../components/dashboard/Footer";
+import AddMaterialForm from "./AddMaterialForm";
 
 function AddMaterial() {
   return (
@@ -18,7 +17,7 @@ function AddMaterial() {
         <h4>Sales Form</h4>
         <AddMaterialForm />
           </div >
-      <Footer/>
+   
     </div>
   );
 }

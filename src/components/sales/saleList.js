@@ -18,9 +18,8 @@ import {
   faSearch,
   faSlidersH,
 } from "@fortawesome/free-solid-svg-icons";
-import Sidebar2 from "../../components/sidebar";
-import Footer from "../../components/dashboard/Footer";
-import SalesDialog from "../../components/modal/salesModal";
+import Sidebar2 from "../sidebar";
+import SalesDialog from "../modal/salesModal";
 
 const SaleList = () => {
   const [salesData, setsalesData] = useState([]);
@@ -148,7 +147,7 @@ const SaleList = () => {
           </Col>
         </Row>
       </div>
-      <Footer />
+     
     </div>
   );
 };
