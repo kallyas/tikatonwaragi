@@ -177,12 +177,12 @@ text-align: left;
   
 }
 th{
-  font-size: 15px;
+  font-size: 35%;
 
   color: #250001;
 }
 td{
-  font-size: 15px;
+  font-size: 25%;
   font-weight: normal;
   color: #250001;
 }
@@ -204,4 +204,9 @@ td{
   margin-left: 2.5%;
   margin-right: 2.5%;
   align-items: center;
+}
+
+.product-table{
+  height: 100%;
+  width: 100%;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, Form, Col, Row, Button } from "react-bootstrap";
 
+// import validationErrors from "../../assets/validate"
 import {useHistory,} from "react-router-dom";
 
 const AddProductForm = () => {
@@ -17,15 +18,23 @@ const AddProductForm = () => {
   const [batchNo, setBatchNo] = useState("");
   const [rate, setRate] = useState("");
   const [amount,setAmount]=useState(totalAmount);
+  const errors = {};
+  const validateProduct = (products) => {
   
+  //  const errors = {};
 
+   if(!productName  || productName.length<6){
+       errors.productName= 'Check Product Name'
+   }
+   return errors;
+ }
   let history = useHistory();
 
   // const [Details, setUserDetails] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault()
+    const validationErrors = validateProduct();
   
-    // setUserDetails({...userDetails})
     console.log(productForm);
     const productEndPoint='http://localhost:8000/tkProduct/products'
     
@@ -46,7 +55,7 @@ console.log(data)
 
 })
 
-history.push("/admin/addproduct");
+history.push("/admin/ProductList");
 }   
  
     const productForm={
@@ -72,6 +81,7 @@ history.push("/admin/addproduct");
                   value={productName}
                   onChange={(event) => setProductName(event.target.value)}
                 />
+                 {errors.productName && <p>errors.productName</p>}
               </Form.Group>
 
               <Form.Group as={Col}>
@@ -80,7 +90,7 @@ history.push("/admin/addproduct");
                   defaultValue="Product Category"
                   name="productCategory"
                   value={category}
-                  onChange={(event) => setCategory(event.target.value)}
+                  onChange={(event) => setCategory(event.target.value), validateProduct}
                 >
                   <option value="">Select a Category</option>
                   {SUPPLIERS.map((c) => (
