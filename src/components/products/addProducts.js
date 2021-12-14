@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, Form, Col, Row, Button } from "react-bootstrap";
 
-// import validationErrors from "../../assets/validate"
+import ValidationProduct from "../../assets/validate"
 import {useHistory,} from "react-router-dom";
 
 const AddProductForm = () => {
@@ -18,22 +18,27 @@ const AddProductForm = () => {
   const [batchNo, setBatchNo] = useState("");
   const [rate, setRate] = useState("");
   const [amount,setAmount]=useState(totalAmount);
-  const errors = {};
-  const validateProduct = (products) => {
-  
-  //  const errors = {};
+  const [errors,setError]=useState("")
 
-   if(!productName  || productName.length<6){
-       errors.productName= 'Check Product Name'
-   }
-   return errors;
- }
   let history = useHistory();
 
-  // const [Details, setUserDetails] = useState("");
+  // Validation of inputs
+  function validateProduct(products) {
+    let errors = {};
+
+    if(!productName  || productName.length<6){
+        errors.productName= 'Check Product Name'
+    }else if (!/\S+@\S+\.\S+/.test(products.productName)) {
+        errors.productName = 'Product name is invalid';
+      }
+    return errors;
+  };
+
+
   const handleSubmit = (event) => {
     event.preventDefault()
-    const validationErrors = validateProduct();
+    if (event) event.preventDefault();
+  setError(validateProduct(productName));
   
     console.log(productForm);
     const productEndPoint='http://localhost:8000/tkProduct/products'
@@ -90,7 +95,7 @@ history.push("/admin/ProductList");
                   defaultValue="Product Category"
                   name="productCategory"
                   value={category}
-                  onChange={(event) => setCategory(event.target.value), validateProduct}
+                  onChange={(event) => setCategory(event.target.value)}
                 >
                   <option value="">Select a Category</option>
                   {SUPPLIERS.map((c) => (
@@ -144,7 +149,9 @@ history.push("/admin/ProductList");
               </Form.Group>
             </Row>
 
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit"
+            onSubmit={validateProduct()}
+            >
               Submit
             </Button>
           </Form>
