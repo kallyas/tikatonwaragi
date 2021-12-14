@@ -59,16 +59,16 @@ history.push("/signin");
     <div className="home-page">
       <Navbar />
 
-      <h1>Sign Up</h1>
+     
       <div className="home-top">
-      <Card className="mx-auto my-2 ">
+      <Card className="mx-auto my-2 " style={{ width: '30rem' }}>
             <Card.Body>
               
               <div className="mb-6 loginForm">
                 <Form onSubmit={handleSubmit} method="POST" action="/signin">
                   <div>
                     <Form.Text className="text-muted">
-                      Please sign in here
+                      Please register here
                     </Form.Text>
                     <InputGroup className="mb-3 mt-6">
                       <InputGroup.Text><FontAwesomeIcon icon={faIdCard} /></InputGroup.Text>
