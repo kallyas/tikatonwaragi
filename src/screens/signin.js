@@ -79,7 +79,7 @@ function SignIn() {
         <div className='home-page'>
             <Navbar/>
             <h1>Login Form</h1>
-         <div className='home-top'>
+         <div className='home-form'>
           
           <Card className="mx-auto my-2 card"  style={{ width: '30rem' }}>
             <Card.Body>

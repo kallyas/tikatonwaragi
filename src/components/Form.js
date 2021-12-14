@@ -4,7 +4,7 @@ import {useHistory,} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faIdCard, faLock, faPhone, faSitemap, faUser,} from "@fortawesome/free-solid-svg-icons";
 
-const SignUpForm = () => {
+const Form = () => {
   
   const [firstName, setFirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -53,18 +53,11 @@ history.push("/signin");
 }   
     
  return (
-    <Container className='home-top'>
-      <Row>
-        <Col></Col>
-        <Col xs={6}>
-          <Card className="mx-auto my-2">
+   
+          <Card className="mx-auto my-2 card">
             <Card.Body>
-              <Card.Title>
-                <div className="mb-6">
-                  <h3>SignUp Form</h3>
-                </div>
-              </Card.Title>
-              <div className="mb-6">
+              
+              <div className="mb-6 loginForm">
                 <Form onSubmit={handleSubmit} method="POST" action="/signin">
                   <div>
                     <Form.Text className="text-muted">
@@ -138,7 +131,7 @@ history.push("/signin");
                     </InputGroup>
                   </div>
                   <div className="d-grid gap-2">
-                    <Button type="submit" variant="primary" name="submit">
+                    <Button type="submit" variant="primary" name="submit " className="loginbtn">
                       Submit
                     </Button>
                   </div>
@@ -146,11 +139,8 @@ history.push("/signin");
               </div>
             </Card.Body>
           </Card>
-        </Col>
-        <Col></Col>
-      </Row>
-    </Container>
+        
   );
 };
 
-export default SignUpForm;
+export default Form;

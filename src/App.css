@@ -31,13 +31,23 @@ text-align: left;
   align-self: center;
   margin: auto 0;
   text-align: center;
-  
+  align-content: center;
 }
 .home-page .home-top{
   padding: 20px;
   margin:10px;
   width: 100%;
-  height: 60vh;
+  height: 90
+  vh;
+  display: flex;
+  margin: auto 0;
+  
+}
+.home-page .home-form{
+  padding: 20px;
+  margin:10px;
+  width: 100%;
+  height: 100%;
   display: flex;
   margin: auto 0;
   
@@ -47,14 +57,14 @@ text-align: left;
   float: left;
   padding: 20px;
   margin:10px;
-  border: 2px solid red;
+  
   align-self: center;
 }
 .home-top-right{
   width: 50%;
   float: right;
   padding: 20px;
-  border: 2px solid red;
+
   margin:10px;
   align-self: center;
 }
@@ -78,7 +88,7 @@ text-align: left;
   font-weight: 600;
   line-height: 38px;
   letter-spacing: 0.01em;
-  
+  height: 100%;
 }
 .loginForm{
   padding: 20px;
