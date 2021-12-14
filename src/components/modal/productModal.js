@@ -30,7 +30,7 @@ export default function FormDialog() {
         Add Product
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Form</DialogTitle>
+        <DialogTitle> Add Product Form</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Please Enter Details Here
@@ -38,8 +38,8 @@ export default function FormDialog() {
         <AddProductForm/>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+         
+          <Button  variant="contained" onClick={handleClose}>Close</Button>
         </DialogActions>
       </Dialog>
     </div>

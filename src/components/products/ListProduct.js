@@ -119,8 +119,11 @@ const ProductList = (props) => {
           className="addCard"
         >
           <Card.Body>
-            <Table hover className="user-table align-items-center">
+          <h5>Products Table</h5>
+            <Table hover className="product-table align-items-center">
+              
               <thead>
+              
                 <tr>
                 <th className="border-bottom">Id</th>
                   <th className="border-bottom">Name</th>

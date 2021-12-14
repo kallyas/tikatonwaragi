@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, Form, Col, Row, Button } from "react-bootstrap";
 
+import ValidationProduct from "../../assets/validate"
 import {useHistory,} from "react-router-dom";
 
 const AddProductForm = () => {
@@ -17,15 +18,28 @@ const AddProductForm = () => {
   const [batchNo, setBatchNo] = useState("");
   const [rate, setRate] = useState("");
   const [amount,setAmount]=useState(totalAmount);
-  
+  const [errors,setError]=useState("")
 
   let history = useHistory();
 
-  // const [Details, setUserDetails] = useState("");
+  // Validation of inputs
+  function validateProduct(products) {
+    let errors = {};
+
+    if(!productName  || productName.length<6){
+        errors.productName= 'Check Product Name'
+    }else if (!/\S+@\S+\.\S+/.test(products.productName)) {
+        errors.productName = 'Product name is invalid';
+      }
+    return errors;
+  };
+
+
   const handleSubmit = (event) => {
     event.preventDefault()
+    if (event) event.preventDefault();
+  setError(validateProduct(productName));
   
-    // setUserDetails({...userDetails})
     console.log(productForm);
     const productEndPoint='http://localhost:8000/tkProduct/products'
     
@@ -46,7 +60,7 @@ console.log(data)
 
 })
 
-history.push("/admin/addproduct");
+history.push("/admin/ProductList");
 }   
  
     const productForm={
@@ -72,6 +86,7 @@ history.push("/admin/addproduct");
                   value={productName}
                   onChange={(event) => setProductName(event.target.value)}
                 />
+                 {errors.productName && <p>errors.productName</p>}
               </Form.Group>
 
               <Form.Group as={Col}>
@@ -134,7 +149,9 @@ history.push("/admin/addproduct");
               </Form.Group>
             </Row>
 
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit"
+            onSubmit={validateProduct()}
+            >
               Submit
             </Button>
           </Form>
