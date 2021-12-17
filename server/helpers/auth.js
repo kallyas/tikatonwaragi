@@ -44,3 +44,10 @@ const verifyToken = async (req, res, next) => {
 };
 
 module.exports = { verifyToken };
+
+//sign JWT token for authenticated user
+const signToken = id => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+           expiresIn: process.env.JWT_EXPIRES_IN
+    });
+ }

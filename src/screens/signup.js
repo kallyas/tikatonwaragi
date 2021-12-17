@@ -6,6 +6,8 @@ import {useHistory,} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faIdCard, faLock, faPhone, faSitemap, faUser,} from "@fortawesome/free-solid-svg-icons";
 
+import authService from "../services/authService";
+
 const SignUpForm = () => {
   
   const [firstName, setFirstName] = useState("");

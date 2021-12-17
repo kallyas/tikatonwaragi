@@ -7,7 +7,6 @@ const Home = () => {
     <div className='home-page'>
       <Navbar/>
       
-        <h1>Welcome to Tikaton!</h1>
         <div className='home-top'>
           
           <div className='home-top-left'>

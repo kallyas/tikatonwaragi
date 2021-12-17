@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import {
 
   Button,
@@ -13,8 +14,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Navbar from '../components/Navbar'
 // import SignUpForm from '../components/signInForm';
-
-function SignIn() {
+import authService from "../services/authService";
+function SignIn({ setToken }) {
       const [username, setUsername] = useState("");
     const [user_password, setPassword] = useState("");
 
@@ -27,28 +28,27 @@ function SignIn() {
   
     let history = useHistory()
 
-    const validate_input = () => {
-      // const { mobilenumber, password } = state
-      if ((userDetails.username ==="")&&(userDetails.user_password === "")) {
-        // Alert("Please Enter Mobile Number");
-        <Alert variant="danger">
-          <p>Username or password cannot be empty</p>
-        </Alert>
-        return false;
-
-      } else{ return true}
-      
-      
-    };
+    function validateForm() {
+      return username.length > 0 && user_password.length > 0;
+    }
   
-    const handleSubmit = async () => {
-      if (validate_input()) {
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      // const token = await loginUser({
+      //   username,
+      //   user_password
+      // });
+      // setToken(token);
+    }
+    
+
+
         // // eslint-disable-next-line no-undef
         const userEndPoint = "http://localhost:8000/login";
   
         //  CookieManager.clearAll(true)
-  
-        await fetch(userEndPoint, {
+    
+        fetch(userEndPoint, {
           method: "post",
           headers: {
             Accept: "application/json",
@@ -72,8 +72,8 @@ function SignIn() {
               <Alert >"Please enter a valid Mobile Number or Password"</Alert>
             }
           });
-      }
-    };
+    
+    
     
     return (
         <div className='home-page'>
@@ -122,7 +122,7 @@ function SignIn() {
                     </InputGroup>
                   </div>
                   <div className="d-grid gap-2">
-                    <Button className="loginbtn" type="submit" variant="primary" name="submit">
+                    <Button className="loginbtn" type="submit" variant="primary" name="submit" disabled={!validateForm()}>
                       Submit
                     </Button>
                   </div>
@@ -135,5 +135,6 @@ function SignIn() {
         </div>
     )
 }
+
 
 export default SignIn;
