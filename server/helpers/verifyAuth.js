@@ -16,7 +16,7 @@ const verifyToken = async (req, res, next) => {
     const {access_token} = req.cookies;
     // const authHeader = req.headers['authorization'];
     // const token = authHeader.split(' ')[1];
-    if (!access_token) {
+    if (!access_token) { const checkPass = await bcrypt.compare(body.user_password, row[0].user_password);
         // redirect to login page
         // errorMessage.error = 'access_token not provided';
         // return res.status(status.bad).send(errorMessage);

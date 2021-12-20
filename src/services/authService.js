@@ -1,39 +1,40 @@
-const API_URL = "http://localhost:8000/tkUser/users";
 
-const register = (username, email, password) => {
-  return axios.post(API_URL + "signup", {
-    username,
-    email,
-    password,
-  });
-};
+// const API_URL = "http://localhost:8000/tkUser/users";
 
-const login = (username, password) => {
-  return axios
-    .post(API_URL + "signin", {
-      username,
-      password,
-    })
-    .then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
+// const register = (username, email, password) => {
+//   return axios.post(API_URL + "signup", {
+//     username,
+//     email,
+//     password,
+//   });
+// };
 
-      return response.data;
-    });
-};
+// const login = (username, password) => {
+//   return axios
+//     .post(API_URL + "signin", {
+//       username,
+//       password,
+//     })
+//     .then((response) => {
+//       if (response.data.accessToken) {
+//         localStorage.setItem("user", JSON.stringify(response.data));
+//       }
 
-const logout = () => {
-  localStorage.removeItem("user");
-};
+//       return response.data;
+//     });
+// };
 
-const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
-};
+// const logout = () => {
+//   localStorage.removeItem("user");
+// };
 
-export default {
-  register,
-  login,
-  logout,
-  getCurrentUser,
-}
+// const getCurrentUser = () => {
+//   return JSON.parse(localStorage.getItem("user"));
+// };
+
+// export default {
+//   register,
+//   login,
+//   logout,
+//   getCurrentUser,
+// }

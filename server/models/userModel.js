@@ -175,17 +175,27 @@ User.login = (username,user_password, result) => {
     }else{
      
       if(result.length >0){
-        const checkPass = bcrypt.compare(body.user_password, row[0].user_password);
-          if(checkPass === true){
-            console.log("found user: ", res[0],{firstName:res.firstName,username});
-                result(null, res[0]);
+    //     const checkPass = bcrypt.compare(body.user_password, row[0].user_password);
+    //       if(checkPass === true){
+    //         console.log("found user: ", res[0],{firstName:res.firstName,username});
+    //             result(null, res[0]);
           
-                return;
-          }else{
-              console.log(result)
-    // not found user with the id
-    result({ kind: "not_found" }, null);
-          }
+    //             return;
+    //       }else{
+    //           console.log(result)
+    // // not found user with the id
+    // result({ kind: "not_found" }, null);
+    //       }
+         if (!Helper.comparePassword(user_password, user_password)) {
+        errorMessage.error = 'The password you provided is incorrect';
+      }
+      console.log("found user: ", res[0]);
+
+      
+      result(null, res[0]);
+
+      return;
+    
        
       }
       else{
