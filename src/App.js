@@ -32,7 +32,7 @@ import React from "react";
             <Route path="/opera" exact component={Opareta} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
-            <Route path="/signin" component={SignIn} />
+            <Route path="/login" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/adminstrator" component={Admin}/>
             <Route path="/material" component={Material}/>

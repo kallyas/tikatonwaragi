@@ -17,19 +17,18 @@ const UserLogin = function (user) {
 };
 
 UserLogin.loginUser = (user, result) => {
-//   if (!errors.isEmpty()) {
-//     return res.status(422).json({ errors: errors.array() });
-//   }
 
   sql.query(
     "SELECT * FROM users WHERE username = ? AND user_password = ?",
     [user.username, user.user_password],
-    function (err, results, fields) {
+    function (err, result, fields) {
       if (results.length > 0) {
         request.session.loggedin = true;
         request.session.username = username;
-        response.redirect("/home");
+        response.redirect("/admin");
       } else {
+
+
         response.send("Incorrect Username and/or Password!");
       }
       console.log("Logged in user: ", { id: response.insertId, ...newuser });
@@ -40,6 +39,15 @@ UserLogin.loginUser = (user, result) => {
 };
 
 UserLogin.login = (username, result) => {
+
+  const token = jwt.sign({
+    username: result[0].username,
+    id: result[0].id
+  },
+  'SECRETKEY', {
+    expiresIn: '7d'
+  }
+);
   sql.query(`SELECT * FROM users WHERE username = ${username}`, (err, res) => {
     if (err) {
       console.log("error: ", err);

@@ -144,15 +144,49 @@ User.removeAll = (result) => {
 User.login = (username,user_password, result) => {
   const checkUser= "SELECT * FROM users WHERE username = ?";
  
-  sql.query(checkUser, [username], (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
+  // sql.query(checkUser, [username], (err, res) => {
+  //   if (err) {
+  //     console.log("error: ", err);
+  //     result(err, null);
+  //     return;
+  //   }
 
-    if (res.length) {
-      if (!Helper.comparePassword(user_password, user_password)) {
+  //   if (res.length) {
+  //     if (!Helper.comparePassword(user_password, user_password)) {
+  //       errorMessage.error = 'The password you provided is incorrect';
+  //     }
+  //     console.log("found user: ", res[0]);
+
+      
+  //     result(null, res[0]);
+
+  //     return;
+  //   }
+    
+  //   // console.log(result)
+  //   // not found user with the id
+  //   result({ kind: "not_found" }, null);
+  // });
+  sql.query('SELECT * FROM users WHERE username = ?',[username],function(error, res){
+    if(error){
+      console.log("error: ", error);
+      results(null, error);
+      return;
+    }else{
+     
+      if(result.length >0){
+    //     const checkPass = bcrypt.compare(body.user_password, row[0].user_password);
+    //       if(checkPass === true){
+    //         console.log("found user: ", res[0],{firstName:res.firstName,username});
+    //             result(null, res[0]);
+          
+    //             return;
+    //       }else{
+    //           console.log(result)
+    // // not found user with the id
+    // result({ kind: "not_found" }, null);
+    //       }
+         if (!Helper.comparePassword(user_password, user_password)) {
         errorMessage.error = 'The password you provided is incorrect';
       }
       console.log("found user: ", res[0]);
@@ -161,12 +195,21 @@ User.login = (username,user_password, result) => {
       result(null, res[0]);
 
       return;
-    }
     
-    // console.log(result)
-    // not found user with the id
-    result({ kind: "not_found" }, null);
+       
+      }
+      else{
+//         res.json({
+//             status:false,    
+//           message:"Email does not exits"
+// });
+    console.log(result)
+        // not found user with the id
+        result({ kind: "User doesnot exist" }, null);
+      }
+    }
   });
+
 };
 
 module.exports = User;

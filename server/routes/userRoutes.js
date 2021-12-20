@@ -3,6 +3,8 @@
   const router = express.Router();
   
     const users = require("../controllers/userController");
+
+    const validations =require('../helpers/validations')
   
     // Create a new user
     router.post("/users", users.create);
