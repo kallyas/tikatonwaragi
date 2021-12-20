@@ -11,18 +11,24 @@ exports.findUs = (req, res) => {
 // 
 
 
-  User.findById(req.params.userId, (err, data)  => {
+  User.findById(req.params.username, (err, data)  => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found user with username  ${req.params.userId}.`,
+          message: `Not found user with username  ${req.params.username}.`,
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving user with id " + req.params.userId,
+          message: "Error retrieving user with id " + req.params.username,
         });
       }
-    } else res.send(data);
+
+      
+    } else {
+     
+      
+      res.send(data);
+    }
   });
 };
 exports.findUser = (req, res) => {
