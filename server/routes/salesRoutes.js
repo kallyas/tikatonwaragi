@@ -3,6 +3,7 @@
   const router = express.Router();
   
     const sales = require("../controllers/saleController");
+    const {verifyToken} =require('../helpers/verifyAuth');
   
     // Create a new sale
     router.post("/sales", sales.create);

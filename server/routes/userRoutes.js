@@ -4,22 +4,23 @@
   
     const users = require("../controllers/userController");
 
-    const validations =require('../helpers/validations')
+    const {verifyToken} =require('../helpers/verifyAuth');
+
   
     // Create a new user
-    router.post("/users", users.create);
+    router.post("/users",  users.create);
   
     // Retrieve all users
-    router.get("/users", users.findAll);
+    router.get("/users", verifyToken,users.findAll);
   
     // Retrieve a single user with userId
-    router.get("/users/:userId", users.findOne);
+    router.get("/users/:userId", verifyToken, users.findOne);
   
     // Update a user with userId
-    router.put("/users/:userId", users.update);
+    router.put("/users/:userId", verifyToken,users.update);
   
     // Delete a user with userId
-    router.delete("/users/:userId", users.delete);
+    router.delete("/users/:userId", verifyToken,users.delete);
   
     // Create a new user
     router.delete("/users", users.deleteAll);

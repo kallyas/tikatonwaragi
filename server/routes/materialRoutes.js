@@ -3,6 +3,7 @@
   const router = express.Router();
   
     const materials = require("../controllers/materialController");
+    const {verifyToken} =require('../helpers/verifyAuth');
   
     // Create a new material
     router.post("/materials", materials.create);

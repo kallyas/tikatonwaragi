@@ -1,6 +1,11 @@
 const jwt = require('jsonwebtoken');
 const { errorMessage, status } = require('./status');
 const dotenv = require('dotenv');
+const bcrypt = require('bcrypt');
+
+
+dotenv.config()
+
 
 dotenv.config();
 
@@ -53,10 +58,6 @@ const signToken = id => {
  }
 
 
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
-const dotenv = require('dotenv')
-dotenv.config()
 
 
 /**

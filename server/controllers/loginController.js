@@ -7,7 +7,7 @@ const jwt =require('jsonwebtoken')
 
 
 // Find a single user with a userId
-exports.findUs = (req, res) => {
+const findUs = (req, res) => {
 // 
 
 

@@ -8,7 +8,7 @@ router.post('/login', Login.findUser);
 // Renew token
 // router.post('/renewToken', Login.generateNewToken);
 
-// user logout
+// // user logout
 // router.post('/logout', Login.logoutUser);
 
 module.exports = router;
