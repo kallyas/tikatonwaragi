@@ -48,7 +48,7 @@ function SignIn({ setToken }) {
           body: JSON.stringify(userDetails),
         })
           .then((res) => {
-            // const cookie = JSON.stringify(res.headers.get('set-cookie'))
+            const cookie = JSON.stringify(res.headers.get('set-cookie'))
             // const newCookie = AsyncStorage.setItem('Cookie', cookie)
             // console.log(cookie)
             // console.log(newCookie)

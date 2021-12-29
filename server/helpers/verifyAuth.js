@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { errorMessage, status } = require('./status');
 const dotenv = require('dotenv');
-
+const bcrypt = require('bcrypt');
 dotenv.config();
 
 /**
@@ -14,11 +14,12 @@ dotenv.config();
 
 const verifyToken = async (req, res, next) => {
     const {access_token} = req.cookies;
-    // const authHeader = req.headers['authorization'];
-    // const token = authHeader.split(' ')[1];
-    if (!access_token) { const checkPass = await bcrypt.compare(body.user_password, row[0].user_password);
+    const authHeader = req.headers['authorization'];
+    const token = authHeader.split(' ')[1];
+    if (!access_token) { 
+        // const checkPass = await bcrypt.compare(body.user_password, row[0].user_password);
         // redirect to login page
-        // errorMessage.error = 'access_token not provided';
+        errorMessage.error = 'access_token not provided';
         // return res.status(status.bad).send(errorMessage);
 
       
