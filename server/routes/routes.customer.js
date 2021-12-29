@@ -3,6 +3,7 @@
   const router = express.Router();
   
     const customers = require("../controllers/customer.controller");
+    const {verifyToken} =require('../helpers/verifyAuth');
   
     // Create a new Customer
     router.post("/customers", customers.create);

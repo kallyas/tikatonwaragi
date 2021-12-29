@@ -1,7 +1,7 @@
 import React from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faBackward, faHome, faUser } from "@fortawesome/free-solid-svg-icons";
-import SideBarData  from '../components/dashboard/SidenavData';
+import SideBarData  from './dashboard/SidenavData';
 
 const Sidebar2 = () => {
   return (

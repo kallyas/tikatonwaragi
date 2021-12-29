@@ -34,16 +34,7 @@ function SignIn({ setToken }) {
   
     const handleSubmit = async (event) => {
       event.preventDefault();
-      // const token = await loginUser({
-      //   username,
-      //   user_password
-      // });
-      // setToken(token);
-    }
-    
-
-
-        // // eslint-disable-next-line no-undef
+            // // eslint-disable-next-line no-undef
         const userEndPoint = "http://localhost:8000/login";
   
         //  CookieManager.clearAll(true)
@@ -57,7 +48,7 @@ function SignIn({ setToken }) {
           body: JSON.stringify(userDetails),
         })
           .then((res) => {
-            // const cookie = JSON.stringify(res.headers.get('set-cookie'))
+            const cookie = JSON.stringify(res.headers.get('set-cookie'))
             // const newCookie = AsyncStorage.setItem('Cookie', cookie)
             // console.log(cookie)
             // console.log(newCookie)
@@ -72,7 +63,7 @@ function SignIn({ setToken }) {
               <Alert >"Please enter a valid Mobile Number or Password"</Alert>
             }
           });
-    
+        }
     
     
     return (

@@ -1,7 +1,9 @@
 const sql = require("./db.js");
 const { errorMessage, status, successMessage } = require("../helpers/status");
-const Helper = require("../helpers/validations.js");
+const jwt = require("jsonwebtoken")
+const Helper = require("../helpers/auth.js");
 const moment = require("moment");
+const dotenv = require('dotenv');
 
 // constructor
 const User = function (user) {
@@ -142,31 +144,7 @@ User.removeAll = (result) => {
 
 // Login
 User.login = (username,user_password, result) => {
-  const checkUser= "SELECT * FROM users WHERE username = ?";
- 
-  // sql.query(checkUser, [username], (err, res) => {
-  //   if (err) {
-  //     console.log("error: ", err);
-  //     result(err, null);
-  //     return;
-  //   }
-
-  //   if (res.length) {
-  //     if (!Helper.comparePassword(user_password, user_password)) {
-  //       errorMessage.error = 'The password you provided is incorrect';
-  //     }
-  //     console.log("found user: ", res[0]);
-
-      
-  //     result(null, res[0]);
-
-  //     return;
-  //   }
-    
-  //   // console.log(result)
-  //   // not found user with the id
-  //   result({ kind: "not_found" }, null);
-  // });
+//  Query database for user with similar username
   sql.query('SELECT * FROM users WHERE username = ?',[username],function(error, res){
     if(error){
       console.log("error: ", error);
@@ -175,20 +153,12 @@ User.login = (username,user_password, result) => {
     }else{
      
       if(result.length >0){
-    //     const checkPass = bcrypt.compare(body.user_password, row[0].user_password);
-    //       if(checkPass === true){
-    //         console.log("found user: ", res[0],{firstName:res.firstName,username});
-    //             result(null, res[0]);
-          
-    //             return;
-    //       }else{
-    //           console.log(result)
-    // // not found user with the id
-    // result({ kind: "not_found" }, null);
-    //       }
+//  Compare Hashed password
          if (!Helper.comparePassword(user_password, user_password)) {
         errorMessage.error = 'The password you provided is incorrect';
       }
+
+      
       console.log("found user: ", res[0]);
 
       

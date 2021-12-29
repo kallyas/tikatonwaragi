@@ -3,23 +3,23 @@ import React from "react";
     import './App.css';
     // import Navbar from "../src/components/Navbar";
     import { BrowserRouter as Router, Switch, Route,} from "react-router-dom";
-    import Home from '../src/screens/Home';
-    import About from '../src/screens/about';
-    import Contact from '../src/screens/contact';
-    import SignUp from '../src/screens/signup';
-    import SignIn from '../src/screens/signin';
-    import Material from '../src/screens/Material'
-    import Admin from "../src/screens/adminScreen/administrator2"
-    import AddMaterial from "../src/components/material/AddMaterial";
-    import ListMaterial from "../src/components/material/ListMaterial";
-    import AddProduct from "../src/components/products/addProducts";
-    import ListProduct from "../src/components/products/ListProduct";
-    import AddSales from "../src/components/sales/AddSales";
-    import Sales from "../src/components/sales/saleList";
+    import Home from './screens/Home';
+    import About from './screens/about';
+    import Contact from './screens/contact';
+    import SignUp from './screens/signup';
+    import SignIn from './screens/signin';
+    import Material from './screens/Material'
+    import Admin from "./screens/adminScreen/administrator2"
+    import AddMaterial from "./components/material/AddMaterial";
+    import ListMaterial from "./components/material/ListMaterial";
+    import AddProduct from "./components/products/addProducts";
+    import ListProduct from "./components/products/ListProduct";
+    import AddSales from "./components/sales/AddSales";
+    import Sales from "./components/sales/saleList";
     import Opareta from "./screens/opera"
     // import components
     
-    import Dashboard from '../src/components/dashboard/Dashboard';
+    import Dashboard from './components/dashboard/Dashboard';
     // import Dashboard1 from '../src/components/dashboard/Dashboard';
     
     function App() {
