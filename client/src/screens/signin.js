@@ -18,7 +18,7 @@ import authService from "../services/authService";
 function SignIn({ setToken }) {
       const [username, setUsername] = useState("");
     const [user_password, setPassword] = useState("");
-
+    const [loginStatus, setLoginStatus]=useState(true)
 
     const userDetails = {
       username: username,
@@ -48,11 +48,18 @@ function SignIn({ setToken }) {
           body: JSON.stringify(userDetails),
         })
           .then((res) => {
-            const cookie = JSON.stringify(res.headers.get('set-cookie'))
+            if(!res.json){
+              setLoginStatus(false)
+            }
+            // const cookie = JSON.stringify(res.headers.get('set-cookie'))
             // const newCookie = AsyncStorage.setItem('Cookie', cookie)
             // console.log(cookie)
             // console.log(newCookie)
+            else{
+              setLoginStatus(false)
+              console.log(res.json)
             return res.json();
+          }
           })
   
           .then((res) => {
