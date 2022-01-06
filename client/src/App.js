@@ -29,12 +29,11 @@ import React from "react";
           <Switch>
           <Route>
             <Route path="/" exact component={Home} />
-            <Route path="/opera" exact component={Opareta} />
+          
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/login" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-            <Route path="/adminstrator" component={Admin}/>
             <Route path="/material" component={Material}/>
             <Route path="/admin" component={Admin} exact/>
             
