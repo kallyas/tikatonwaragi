@@ -64,10 +64,11 @@ function SignIn({ setToken }) {
   
           .then((res) => {
             if (res && res.status === "success") {
+              
               history.push("/admin");
             } else if (res && res.status === "error") {
              
-              <Alert >"Please enter a valid Mobile Number or Password"</Alert>
+              
             }
           });
         }
