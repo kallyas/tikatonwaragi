@@ -8,7 +8,7 @@
 
   
     // Create a new user
-    router.post("/users",  users.create);
+    router.post("/user/register",  users.create);
   
     // Retrieve all users
     router.get("/users", verifyToken,users.findAll);

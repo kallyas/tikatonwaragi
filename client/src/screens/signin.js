@@ -17,7 +17,7 @@ import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Navbar from '../components/Navbar'
 // import SignUpForm from '../components/signInForm';
 import { useDispatch } from "react-redux";
-import { createTutorial } from "../actions/tutorials";
+import { createTutorial } from "../actions/authActions";
 
 
 function SignIn() {

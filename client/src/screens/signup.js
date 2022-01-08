@@ -6,7 +6,7 @@ import {useHistory,} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faIdCard, faLock, faPhone, faSitemap, faUser,} from "@fortawesome/free-solid-svg-icons";
 
-import authService from "../services/authService";
+import authService from "../services/AuthService";
 
 const SignUpForm = () => {
   
@@ -34,7 +34,8 @@ const SignUpForm = () => {
   
     // setUserDetails({...userDetails})
     console.log(userDetails);
-    const userEndPoint='http://localhost:8000/tkUser/users'
+    const userEndPoint='http://localhost:8000/tkUser/users/register'
+    
     
     fetch(userEndPoint, {
       method: 'post',

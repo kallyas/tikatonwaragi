@@ -1,6 +1,5 @@
-import { authHeader } from '../_helpers';
 
-export const userService = {
+export const UserService = {
     login,
     logout,
     register,
@@ -17,7 +16,7 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
 
-    return fetch(`/users/authenticate`, requestOptions)
+    return fetch(`/users/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
