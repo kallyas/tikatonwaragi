@@ -12,10 +12,16 @@ import {
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+
+
 import Navbar from '../components/Navbar'
 // import SignUpForm from '../components/signInForm';
-import authService from "../services/authService";
-function SignIn({ setToken }) {
+import { useDispatch } from "react-redux";
+import { createTutorial } from "../actions/tutorials";
+
+
+function SignIn() {
+
       const [username, setUsername] = useState("");
     const [user_password, setPassword] = useState("");
     const [loginStatus, setLoginStatus]=useState(true)
