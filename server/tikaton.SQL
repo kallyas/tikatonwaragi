@@ -35,8 +35,7 @@ create table if not exists tika_transaction(
     t_category varchar(20)not null,
     t_details varchar(20)not null,
     t_type varchar(20)not null,
-    t_date varchar(20)not null,
-        
+    t_date varchar(20)not null
 );
 create table if not exists tika_sales(
     id varchar (40)primary key,
@@ -46,7 +45,8 @@ create table if not exists tika_sales(
     unit_price int (10),
     amount int (10),
     payment_mode varchar(10), 
-    sale_date varchar(20)not null     
+    sale_date varchar(20)not null,
+    constraint fk_product_name foreign key (product_name) references products(product_name)     
 );
 
 create table if not exists customers(

@@ -1,0 +1,26 @@
+{
+  "name": "tikatonwaragi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd server && npm start",
+    "client": "cd client && npm start",
+    "installDeps": "concurrently \"cd server && npm install\" \"cd client && npm install\"",
+    "startDev": "concurrently \"npm:server\" \"npm:client\"",
+    "build": "cd client && npm run build",
+    "test": "cd server && npm test",
+    "seed": "cd server && npm run seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monicaiyb/tikatonwaragi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monicaiyb/tikatonwaragi/issues"
+  },
+  "homepage": "https://github.com/monicaiyb/tikatonwaragi#readme"
+}
